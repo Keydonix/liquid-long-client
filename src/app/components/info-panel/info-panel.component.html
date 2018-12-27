@@ -19,64 +19,57 @@
   </div>
 </div>
 
-<hr/>
-<button class="collapsible" (click)="clickMoreDetails()" [class.hide]="isShowDetails">More Details <span
-  class="material-icons">
-    keyboard_arrow_down
-</span></button>
+<hr />
+<button class="collapsible" (click)="clickMoreDetails()" [class.hidden]="isShowDetails">More Details
+  <span class="material-icons">keyboard_arrow_down</span>
+</button>
 <div class="expand" [hidden]="isHideDetails">
-  <div class="descriptions">
+  <div class="descriptions" [style.visibility]="!(leverage$ | async) ? 'hidden' : ''">
     <div class="left">
-      <p><img src="assets/line-green-white.png" width="30" height="6"/></p>
-      <p><img src="assets/line-dashed.png" width="30" height="3"/></p>
-      <p><img src="assets/line-dashed-small.png" width="30" height="3"/></p>
-      <p><img src="assets/line-red-white.png" width="30" height="6"/></p>
+      <p><img src="assets/line-green-white.png" width="30" height="6" /></p>
+      <p><img src="assets/line-dashed.png" width="30" height="3" /></p>
+      <p><img src="assets/line-dashed-small.png" width="30" height="3" /></p>
+      <p><img src="assets/line-red-white.png" width="30" height="6" /></p>
     </div>
     <div class="right">
-      <p> Price to gain +100% to your money</p>
-      <p>Price to gain +50% to your money</p>
-      <p> Price to gain +0% to your money</p>
-      <p>Price to lose {{percentToLoose$ | async | percent}} if you close your position by yourself
-        or lose {{(percentToLoose$ | async) + (liquidationPenaltyProcentage$ | async) | percent}} if your would force
-        closed.</p>
+      <p>Price to gain 100% of your money</p>
+      <p>Price to gain 50% of your money</p>
+      <p>Price to gain 0% of your money</p>
+      <p style="white-space: pre-line">Liquidation price<br />
+        • lose {{maxLossPercentage$ | async | percent}} if you close your position voluntarily<br />
+        • lose {{liquidationLossPercentage$ | async | percent}} if your position is forcefully closed</p>
     </div>
-    <hr/>
+    <hr />
   </div>
 
   <div class="gradient-wrapper">
     <div class="txt">{{priceToGain100$ | async | currency}}</div>
-    <div class="gradient"
-         (pointerenter)="mouseEnterChart($event)"
-         (pointermove)="mouseMoveInChart($event)"
-         (pointerleave)="mouseLeaveChart()"
-    >
-      <div class="solid" style="display: none;" #priceLine>
-      </div>
-      <div class="dashed" style="display: none;" #dashedLine>
+    <div class="gradient" (pointerleave)="mouseLeaveChart()" (pointerenter)="mouseEnterChart()" #gradient>
+      <div class="line gain50" [class.hidden]="!(leverage$ | async)" #dashedLine>
         <div class="txt bottom">{{priceToGain50$ | async | currency}}</div>
       </div>
-      <div class="dotted" style="display: none;" #dottedLine>
+      <div class="line current" [class.hidden]="!(leverage$ | async)" #dottedLine>
         <div class="txt bottom">{{priceToGain0$ | async | currency}}</div>
       </div>
-      <div>
-        <div class="txt bottom" style="display: block;" #bottomLineText>{{liquidationPrice$ | async | currency}}</div>
+      <div class="line liquidation" [class.hidden]="!(leverage$ | async)">
+        <div class="txt bottom" #bottomLineText>{{liquidationPrice$ | async | currency}}</div>
+      </div>
+      <div class="at-cursor" [class.hidden]="!isMouseInChart || !(leverage$ | async)" #priceLine>
       </div>
     </div>
   </div>
+  <div class="bighint shadow" [class.hidden]="!isMouseInChart || !(leverage$ | async)" style="top: -200px" #toolTipBox>
+    <div>
+      <span>Price</span>
+      <span class="right" #toolTipPrice> {{priceAtCursor$ | async | currency}}</span>
+    </div>
+    <div>
+      <span>Position Value:</span>
+      <span class="right" #toolTipPortfolioValue> {{portfolioValueAtCursor$ | async | currency}}</span>
+    </div>
+    <i></i>
+  </div>
 </div>
-<div class="closebutton" (click)="clickMoreDetails()" [hidden]="isHideDetails">Close details <span
-  class="material-icons">
+<div class="closebutton" (click)="clickMoreDetails()" [class.hidden]="isHideDetails">Close details <span class="material-icons">
     keyboard_arrow_up
-</span></div>
-
-<div class="bighint shadow" style="display: inline-block;" #toolTipBox>
-  <div>
-    <span>Price</span>
-    <span class="right"> {{price}}</span>
-  </div>
-  <div>
-    <span>Position Value:</span>
-    <span class="right"> {{portfolioValue}}</span>
-  </div>
-  <i></i>
-</div>
+  </span></div>

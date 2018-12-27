@@ -11,7 +11,7 @@ export const environment = {
   liquidLongContractAddress: '0xF3BCABD8FAE29F75BE271EBE2499EDB4C7C139B7',
   defaultEthPriceInUsd: 195,
   timeoutToSwitchToJsonRpc: 10000,    // milliseconds
-  jsonRpcAddress: 'http://127.0.0.1:8545',
+  jsonRpcAddress: 'http://127.0.0.1:1235',
   defaultProviderFeeRate: 0.21,
   web3PollingInterval: 1000,          // milliseconds: how often we should hammer the provider (e.g., MetaMask) for block updates and such
   ethPricePollingFrequency: 3000,     // frequency in milliseconds
