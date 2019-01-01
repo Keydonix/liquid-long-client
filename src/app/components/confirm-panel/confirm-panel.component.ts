@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToolTipComponent } from '../tool-tip-component';
+import { TooltipComponent } from '../tooltip-component';
 import { mapTo } from 'rxjs/operators';
 import { merge, Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { merge, Observable } from 'rxjs';
   templateUrl: './confirm-panel.component.html',
   styleUrls: ['./confirm-panel.component.scss']
 })
-export class ConfirmPanelComponent extends ToolTipComponent implements OnInit {
+export class ConfirmPanelComponent extends TooltipComponent implements OnInit {
 
   @Input() totalPrice: number;
   @Input() leverageAmount: number;
@@ -18,8 +18,6 @@ export class ConfirmPanelComponent extends ToolTipComponent implements OnInit {
   @Input() confirm$: Observable<boolean>;
   @Output() submit$ = new EventEmitter<boolean>();
   isDisabled$: Observable<boolean>;
-
-  constructor() { super(); }
 
   ngOnInit() {
     this.isDisabled$ = merge(

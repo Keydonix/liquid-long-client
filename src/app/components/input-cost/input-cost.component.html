@@ -25,10 +25,10 @@
          class="input" placeholder="Type the amount between {{minValue | number:'1.1-9'}}..{{maxValue | number:'1.1-9'}}"
   />
   <span class="yellow bigger bold">ETH</span>
-  <span class="material-icons right cursorPointer" (click)="toggleToolTip()">help</span>
+  <span class="material-icons right cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
-<div class="tooltip shadow" *ngIf="isShowTooltip">
-  Some explanation text with <a href="#">external links</a> goes here
+<div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
+  The maximum amount you are willing to pay in <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/33913-what-are-exchange-costs">exchange costs</a>.  Any unused exchange costs will be refunded to you at the end of the transaction.
   <i></i>
 </div>

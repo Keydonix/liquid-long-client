@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToolTipComponent } from '../tool-tip-component';
 import { Observable } from 'rxjs';
+import { TooltipComponent } from '../tooltip-component';
 
 
 @Component({
@@ -8,15 +8,13 @@ import { Observable } from 'rxjs';
   templateUrl: './input-cost.component.html',
   styleUrls: ['./input-cost.component.scss']
 })
-export class InputCostComponent extends ToolTipComponent implements OnInit {
+export class InputCostComponent extends TooltipComponent implements OnInit {
 
   @Input() exchangeCostRangeLimits$: Observable<{ low: number, high: number }>;
   @Output() value$ = new EventEmitter<number>();
   minValue = 0;
   maxValue = 250;
   numberValue: number;
-
-  constructor() { super(); }
 
   static fixRounding(value: number, numberOfRepetitions = 3): number {
     const stringValue = value.toString();

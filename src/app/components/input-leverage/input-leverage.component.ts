@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ToolTipComponent } from '../tool-tip-component';
+import { TooltipComponent } from '../tooltip-component';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -7,7 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './input-leverage.component.html',
   styleUrls: ['./input-leverage.component.scss']
 })
-export class InputLeverageComponent extends ToolTipComponent implements OnInit {
+export class InputLeverageComponent extends TooltipComponent implements OnInit {
 
   @Output() value$ = new EventEmitter<number>();
   numberValue: number;

@@ -126,7 +126,11 @@ input.range2::-ms-thumb {
 }
 
 .tooltip {
-  top: 60px;
+  bottom: 45px;
+}
+
+.tooltip-button {
+  user-select: none;
 }
 
 @media only screen and (max-width: 500px) {
