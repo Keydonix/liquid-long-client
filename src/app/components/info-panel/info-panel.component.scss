@@ -1,6 +1,6 @@
 .gradient-wrapper {
   text-align: left;
-  margin-top: 30px;
+  margin-top: 5px;
   font-weight: 300;
 
   .txt {
@@ -14,16 +14,16 @@
 
 .gradient {
   background: linear-gradient(to bottom, #42931d, #fc5e59);
-  height: 348px;
+  height: 373px;
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   padding-bottom: 2px;
   overflow: hidden;
+  position: relative;
 
-  div {
-    display: flex;
+  .line {
     height: 33%;
     position: relative;
 
@@ -33,25 +33,25 @@
     }
   }
 
-  .dashed {
+  .line.gain50 {
     border-bottom: 2px dashed #ffffff;
   }
 
-  .dotted {
+  .line.current {
     border-bottom: 2px dotted #ffffff;
   }
 
-  .solid {
+  .at-cursor {
     position: absolute;
     border-bottom: 1px solid #ffffff;
-    top: 438px;
     height: 1px;
     width: 100%;
   }
+
 }
 
 .bighint {
-  display: inline-block;
+  left: 100px;
   width: 160px;
   height: 46px;
   background-color: white;
@@ -74,26 +74,26 @@
     font-size: 14px;
     font-weight: 300;
   }
-}
 
-.bighint i {
-  position: absolute;
-  top: 99%;
-  left: 12%;
-  width: 25px;
-  height: 15px;
-  overflow: hidden;
-}
+  i {
+    position: absolute;
+    top: 99%;
+    left: 12%;
+    width: 25px;
+    height: 15px;
+    overflow: hidden;
+  }
 
-.bighint i::after {
-  content: '';
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  background-color: #ffffff;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  i::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #ffffff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .descriptions {
@@ -252,9 +252,6 @@
     }
 
   }
-  .hide {
-    display: none;
-  }
   .gradient-wrapper {
     font-size: 15px;
   }
@@ -262,25 +259,24 @@
     .solid {
       width: 90%;
     }
-  }
+    .bighint i {
+      top: 50%;
+      left: -12px;
+      margin-top: -12px;
+      width: 12px;
+      height: 24px;
+      overflow: hidden;
+    }
 
-  .bighint i {
-    top: 50%;
-    left: -12px;
-    margin-top: -12px;
-    width: 12px;
-    height: 24px;
-    overflow: hidden;
-  }
+    .bighint i::after {
+      width: 12px;
+      height: 12px;
+      left: 0;
+      top: 50%;
+      transform: translate(50%, -50%) rotate(-45deg);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    }
 
-  .bighint i::after {
-    width: 12px;
-    height: 12px;
-    left: 0;
-    top: 50%;
-    transform: translate(50%, -50%) rotate(-45deg);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
   }
 
 }
-
