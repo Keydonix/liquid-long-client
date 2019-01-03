@@ -22,21 +22,15 @@
     </button>
   </div>
 
-
   <div class="tooltip" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
-    <div class="left">
-      <p class="bold">Total Price</p>
-      <p>Leverage Amount</p>
-      <p>Exchange Cost</p>
-      <p>Service Fee</p>
-    </div>
-
-    <div class="right">
-      <p class="bold">{{totalPrice | number:'1.1-9'}} ETH</p>
-      <p>{{leverageAmount | number:'1.1-9'}} ETH</p>
-      <p>{{exchangeCost | number:'1.1-9'}} ETH</p>
-      <p>{{serviceFee | number:'1.1-9'}} ETH</p>
-    </div>
+    <p class="bold" style="grid-column: 1; grid-row: 1">Total Price</p>
+    <p class="bold" style="grid-column: 2; grid-row: 1">{{totalPrice | number:'1.1-9'}} ETH</p>
+    <p style="grid-column: 1; grid-row: 2">Leverage Amount</p>
+    <p style="grid-column: 2; grid-row: 2">{{leverageAmount | number:'1.1-9'}} ETH</p>
+    <p style="grid-column: 1; grid-row: 3">Exchange Cost</p>
+    <p style="grid-column: 2; grid-row: 3">{{exchangeCost | number:'1.1-9'}} ETH</p>
+    <p style="grid-column: 1; grid-row: 4">Service Fee</p>
+    <p style="grid-column: 2; grid-row: 4">{{serviceFee | number:'1.1-9'}} ETH</p>
     <i></i>
   </div>
 </div>

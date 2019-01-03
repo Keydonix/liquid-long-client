@@ -16,26 +16,6 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
   maxValue = 250;
   numberValue: number;
 
-  static fixRounding(value: number, numberOfRepetitions = 3): number {
-    const stringValue = value.toString();
-    const pointPosition = stringValue.search(/\./);
-    const repeatingPosition = stringValue.search( new RegExp(`(\\d)\\1{${numberOfRepetitions - 1},}`));
-    if (pointPosition === -1 || repeatingPosition === -1) {   // if integer or there is no cyclic repetitions means no rounding error
-      return value;
-    }
-    const fractionDigits = Math.max( repeatingPosition - pointPosition - 1, numberOfRepetitions);
-
-    // incrementing the value ultimate digit;
-    const newStringValue = value.toFixed(fractionDigits);
-    const newValue = +newStringValue;
-    if (newValue < value) {
-      // incrementing the value ultimate digit
-      const fixedValue = newStringValue.substring(0, newStringValue.length - 1) + (newStringValue.substr(-1) + 1);
-      return +fixedValue;
-    } else {
-      return +value.toFixed(fractionDigits);
-    }
-  }
 
   static toSignificantFigures(value: number, numberOfSignificantFigures: number, roundingFunction: (number) => number): number {
     // early return for 0
@@ -61,12 +41,8 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
 
   ngOnInit() {
     this.exchangeCostRangeLimits$.subscribe(({low, high}) => {
-      // this.minValue = low;
-      // this.maxValue = high;
-      // this.minValue = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
-      // this.maxValue = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
-      this.minValue = InputCostComponent.fixRounding(low);
-      this.maxValue = InputCostComponent.fixRounding(high);
+      this.minValue = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
+      this.maxValue = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
       this.value$.emit((this.minValue + this.maxValue) / 2);
     });
   }
