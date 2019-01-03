@@ -101,6 +101,10 @@ export class MainPageComponent implements OnInit {
     }
   }
 
+  enableEthereumReprompt() {
+    this.middleware.enableEthereum().catch(() => {})
+  }
+
   onSubmit() {
     this.logger.log(`Transaction submitted with values (${this.leverage}, ${this.quantity}, ${this.exchangeCost}, ${this.serviceFee}).`);
 

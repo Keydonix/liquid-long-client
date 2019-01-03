@@ -28,6 +28,10 @@
   }
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .container {
   display: grid;
   grid-template-columns: 50% auto;
