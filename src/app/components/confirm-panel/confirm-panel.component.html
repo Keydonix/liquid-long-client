@@ -1,0 +1,44 @@
+<hr/>
+
+<div class="final shadow">
+  <div class="left">
+    <div>TOTAL PRICE<span class="material-icons cursorPointer" (click)="toggleToolTip()">help</span></div>
+
+    <div class="grid" *ngIf="totalPrice && exchangeCost; then knownValues; else unknownValues"></div>
+    <ng-template class="grid" #knownValues>
+      <div class="blue">{{totalPrice | number:'1.1-9'}} ETH</div>
+      <div> including {{serviceFee | number:'1.1-9'}} ETH service fee</div>
+    </ng-template>
+    <ng-template class="grid" #unknownValues>
+      <div class="blue">?</div>
+      <div> please enter the values to see the price</div>
+    </ng-template>
+  </div>
+
+  <div class="right">
+    <button class="shadow"
+            (click)="submit$.emit(true)"
+            [disabled]="isDisabled$ | async">Confirm Transaction
+    </button>
+  </div>
+
+
+  <div class="tooltip" *ngIf="isShowTooltip">
+    <div class="left">
+      <p class="bold">Total Price</p>
+      <p>Leverage Amount</p>
+      <p>Exchange Cost</p>
+      <p>Service Fee</p>
+    </div>
+
+    <div class="right">
+      <p class="bold">{{totalPrice | number:'1.1-9'}} ETH</p>
+      <p>{{leverageAmount | number:'1.1-9'}} ETH</p>
+      <p>{{exchangeCost | number:'1.1-9'}} ETH</p>
+      <p>{{serviceFee | number:'1.1-9'}} ETH</p>
+    </div>
+    <i></i>
+  </div>
+</div>
+
+<div class="padding-top">Have questions? <a href="https://help.keydonix.com" class="yellow">Get answers</a></div>

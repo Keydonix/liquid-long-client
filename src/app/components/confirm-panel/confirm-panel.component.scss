@@ -1,0 +1,141 @@
+.final {
+  height: 60px;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 12px;
+  position: relative;
+  font-weight: 300;
+  .material-icons {
+    font-size: 18px;
+    color: #424242;
+    margin-left: 5px;
+    vertical-align: bottom;
+  }
+  .blue {
+    font-size: 30px;
+    font-weight: 700;
+    float: left;
+  }
+  .blue + div {
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 16px
+  }
+  button {
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: #4f95e5;
+    color: white;
+    width: 321px;
+    padding: 15px 20px;
+    border: none;
+    height: 60px;
+    outline: none;
+    position: absolute;
+    bottom: 19px;
+    right: 15px;
+  }
+  button:disabled {
+    background: url("../../../assets/preloader.gif") no-repeat center #4f95e5;
+    border: none;
+    color: #4f95e5;
+    font-size: 1px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    transform: translateY(4px);
+  }
+}
+
+.tooltip {
+  width: 46%;
+  left: 0;
+  top: -140px;
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 2px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+  color: #474747;
+  .bold {
+    font-size: 18px
+  }
+  p {
+    margin: 5px 0;
+  }
+  .left {
+    width: 60%;
+    text-align: left;
+  }
+  .right {
+    width: 30%;
+    text-align: right;
+  }
+}
+
+.tooltip i {
+  top: 100%;
+  left: 30%;
+}
+
+.padding-top {
+  font-size: 20px;
+  margin-bottom: 50px
+}
+
+@media only screen and (max-width: 500px) {
+  .final {
+    height: 193px;
+    text-align: center;
+    padding: 10px;
+    button {
+      font-size: 21px;
+      width: 266px;
+    }
+    .left {
+      font-size: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      float: none;
+    }
+
+    .blue + div {
+      float: none;
+      font-size: 14px
+    }
+    div {
+      margin-bottom: 3%;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: auto;
+    }
+    .blue {
+      font-size: 30px;
+      float: none;
+    }
+  }
+  .final .material-icons {
+    font-size: 18px;
+    vertical-align: bottom;
+    margin-left: 8px;
+  }
+
+  .tooltip {
+    font-size: 14px;
+    width: 94%;
+    .bold {
+      font-size: 16px;
+    }
+    .left {
+      float: left;
+      text-align: left;
+    }
+    i {
+      left: 60%;
+    }
+    .right {
+      width: 35%;
+    }
+  }
+
+}

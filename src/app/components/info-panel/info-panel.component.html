@@ -1,0 +1,82 @@
+<div class="prices">
+  <div class="first">
+    <div>Current ETH Price</div>
+    <div class="price">
+      {{price$ | async | currency}}
+    </div>
+  </div>
+  <div>
+    <div>Liquidation Price</div>
+    <div class="price red">
+      {{liquidationPrice$ | async | currency}}
+    </div>
+  </div>
+  <div>
+    <div>Current Portfolio Value</div>
+    <div class="price">
+      {{portfolioValue$ | async | currency}}
+    </div>
+  </div>
+</div>
+
+<hr/>
+<button class="collapsible" (click)="clickMoreDetails()" [class.hide]="isShowDetails">More Details <span
+  class="material-icons">
+    keyboard_arrow_down
+</span></button>
+<div class="expand" [hidden]="isHideDetails">
+  <div class="descriptions">
+    <div class="left">
+      <p><img src="assets/line-green-white.png" width="30" height="6"/></p>
+      <p><img src="assets/line-dashed.png" width="30" height="3"/></p>
+      <p><img src="assets/line-dashed-small.png" width="30" height="3"/></p>
+      <p><img src="assets/line-red-white.png" width="30" height="6"/></p>
+    </div>
+    <div class="right">
+      <p> Price to gain +100% to your money</p>
+      <p>Price to gain +50% to your money</p>
+      <p> Price to gain +0% to your money</p>
+      <p>Price to lose {{percentToLoose$ | async | percent}} if you close your position by yourself
+        or lose {{(percentToLoose$ | async) + (liquidationPenaltyProcentage$ | async) | percent}} if your would force
+        closed.</p>
+    </div>
+    <hr/>
+  </div>
+
+  <div class="gradient-wrapper">
+    <div class="txt">{{priceToGain100$ | async | currency}}</div>
+    <div class="gradient"
+         (pointerenter)="mouseEnterChart($event)"
+         (pointermove)="mouseMoveInChart($event)"
+         (pointerleave)="mouseLeaveChart()"
+    >
+      <div class="solid" style="display: none;" #priceLine>
+      </div>
+      <div class="dashed" style="display: none;" #dashedLine>
+        <div class="txt bottom">{{priceToGain50$ | async | currency}}</div>
+      </div>
+      <div class="dotted" style="display: none;" #dottedLine>
+        <div class="txt bottom">{{priceToGain0$ | async | currency}}</div>
+      </div>
+      <div>
+        <div class="txt bottom" style="display: block;" #bottomLineText>{{liquidationPrice$ | async | currency}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="closebutton" (click)="clickMoreDetails()" [hidden]="isHideDetails">Close details <span
+  class="material-icons">
+    keyboard_arrow_up
+</span></div>
+
+<div class="bighint shadow" style="display: inline-block;" #toolTipBox>
+  <div>
+    <span>Price</span>
+    <span class="right"> {{price}}</span>
+  </div>
+  <div>
+    <span>Position Value:</span>
+    <span class="right"> {{portfolioValue}}</span>
+  </div>
+  <i></i>
+</div>

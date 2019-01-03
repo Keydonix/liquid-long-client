@@ -1,0 +1,136 @@
+.range2 {
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 85%;
+}
+
+/* Triangle */
+.triangle {
+  margin-top: -40px;
+  position: relative;
+  display: block;
+  border: none;
+  height: 35px;
+  background: linear-gradient(to right, #4f95e5 0%, #3cc2b1 100%);
+  z-index: 1;
+}
+
+.triangle:before {
+  display: block; /* to be able to apply width/ height/ transform */
+  width: 122%;
+  height: 45%;
+  transform: skewY(160deg) rotate(196deg) translate(14%);
+  background: #00385a;
+  background-size: cover;
+  content: '';
+}
+
+.triangle-overlay {
+  border-top: 36px solid #00385a;
+  border-right: 350px solid transparent;
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 40px;
+  margin-top: -50px;
+}
+
+@-moz-document url-prefix() {
+  .triangle.firefox {
+    margin-top: -32px;
+  }
+  .triangle-overlay.firefox {
+    margin-top: -42px;
+  }
+  h4 {
+    margin-bottom: 30px
+  }
+}
+
+/* Input to work with triangle */
+input.range2 {
+  position: relative;
+  z-index: 3;
+}
+
+/* Hide */
+input.range2 {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input.range2::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input.range2::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Thumb */
+/* Special styling for WebKit/Blink */
+input.range2::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 36px;
+  width: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(50, 50, 50, 0.91), 1px 0 1px rgba(50, 50, 50, 0.91);
+}
+
+/* All the same stuff for Firefox */
+input.range2::-moz-range-thumb {
+  box-shadow: 0 1px 1px rgba(50, 50, 50, 0.91), 1px 0 1px rgba(50, 50, 50, 0.91);
+  border: none;
+  height: 36px;
+  width: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input.range2::-moz-range-track {
+  outline: none;
+  border: 0;
+  background: none;
+}
+
+/* All the same stuff for IE */
+input.range2::-ms-thumb {
+  box-shadow: 0 1px 1px rgba(50, 50, 50, 0.91), 1px 0 1px rgba(50, 50, 50, 0.91);
+  border: none;
+  outline: none;
+  height: 36px;
+  width: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.input-wrapper2 {
+  text-align: center;
+  margin-bottom: 30px;
+  p {
+    font-weight: lighter;
+    font-size: 10pt;
+  }
+}
+
+.tooltip {
+  top: 60px;
+}
+
+@media only screen and (max-width: 500px) {
+  .tooltip {
+    top: 70px;
+  }
+}

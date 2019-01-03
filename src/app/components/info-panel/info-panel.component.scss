@@ -1,0 +1,286 @@
+.gradient-wrapper {
+  text-align: left;
+  margin-top: 30px;
+  font-weight: 300;
+
+  .txt {
+    padding-left: 14px;
+    font-size: 15px;
+    height: 25px;
+  }
+
+  user-select: none;
+}
+
+.gradient {
+  background: linear-gradient(to bottom, #42931d, #fc5e59);
+  height: 348px;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-bottom: 2px;
+  overflow: hidden;
+
+  div {
+    display: flex;
+    height: 33%;
+    position: relative;
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .dashed {
+    border-bottom: 2px dashed #ffffff;
+  }
+
+  .dotted {
+    border-bottom: 2px dotted #ffffff;
+  }
+
+  .solid {
+    position: absolute;
+    border-bottom: 1px solid #ffffff;
+    top: 438px;
+    height: 1px;
+    width: 100%;
+  }
+}
+
+.bighint {
+  display: inline-block;
+  width: 160px;
+  height: 46px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 10pt;
+  font-family: 'Lato', sans-serif;
+  text-align: justify;
+  position: absolute;
+  color: #474747;
+
+  div {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: white;
+  }
+
+  div + div {
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
+
+.bighint i {
+  position: absolute;
+  top: 99%;
+  left: 12%;
+  width: 25px;
+  height: 15px;
+  overflow: hidden;
+}
+
+.bighint i::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.descriptions {
+  text-align: left;
+  margin-top: 5%;
+  margin-left: 14px;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 22px;
+  clear: both;
+  height: 100%;
+
+  .left {
+    width: 12%;
+  }
+
+  .right {
+    width: 83%;
+    padding-right: 5%;
+  }
+
+  .material-icons {
+    font-size: 16px;
+    display: block;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.prices {
+  padding-top: 5%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 37% 29% 33%;
+  font-size: 9px;
+  text-transform: uppercase;
+
+  .first {
+    padding-left: 14px;
+  }
+
+  .red {
+    color: #fc5e59;
+  }
+
+  .price {
+    font-size: 24px;
+    height: 32px;
+  }
+
+  div {
+    text-align: left;
+
+  }
+}
+
+.collapsible {
+  display: none
+}
+
+@media only screen and (min-width: 501px) {
+  .expand {
+    display: block
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .prices {
+    width: 90%;
+    font-size: 12px;
+    padding-left: 15px;
+    display: grid;
+    grid-template-columns: auto;
+
+    .first {
+      padding-left: 0;
+    }
+
+    div {
+      float: left;
+      text-transform: none;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .price {
+      margin-left: 5%;
+      float: right;
+      font-size: 18px;
+
+    }
+
+  }
+
+  .descriptions {
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+
+    p {
+      line-height: 20px;
+      color: #D8D8D8;
+    }
+
+    .left {
+      width: 20%;
+    }
+
+    .right {
+      width: 75%;
+    }
+  }
+  /* Style the button that is used to open and close the collapsible content */
+  .collapsible {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    border-top: 3px solid #000;
+
+    .material-icons {
+      vertical-align: middle;
+      font-size: 30px;
+    }
+  }
+  .collapsible, .closebutton {
+    font-size: 12px;
+  }
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+  }
+
+  /* Style the collapsible content. Note: hidden by default */
+  .expand {
+    padding: 0 14px;
+    overflow: hidden;
+  }
+
+  .closebutton {
+    cursor: pointer;
+    padding-top: 5px;
+    background: transparent;
+    color: white;
+    height: 30px;
+
+    .material-icons {
+      vertical-align: middle;
+      font-size: 30px;
+      font-weight: lighter;
+    }
+
+  }
+  .hide {
+    display: none;
+  }
+  .gradient-wrapper {
+    font-size: 15px;
+  }
+  .gradient {
+    .solid {
+      width: 90%;
+    }
+  }
+
+  .bighint i {
+    top: 50%;
+    left: -12px;
+    margin-top: -12px;
+    width: 12px;
+    height: 24px;
+    overflow: hidden;
+  }
+
+  .bighint i::after {
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 50%;
+    transform: translate(50%, -50%) rotate(-45deg);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  }
+
+}
+

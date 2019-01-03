@@ -1,0 +1,288 @@
+$myred: #FE5F5B;
+$myblue: #4f95e5;
+$sea-color: #16D0C0;
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #00385a;
+  margin: 0;
+}
+
+body, button {
+  font-family: Roboto slab, serif;
+  font-weight: 300;
+}
+
+.wrapper {
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+
+}
+
+.lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.roboto {
+  font-family: 'roboto slab', serif;
+}
+
+h1 {
+  font-weight: 300;
+  color: white;
+  font-size: 48px;
+  line-height: 78px;
+}
+
+h4 {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  cursor: -webkit-grabbing;
+}
+
+input[type=range]::-moz-range-thumb:active {
+  cursor: -moz-grabbing;
+}
+
+input[type=range]::-moz-range-track {
+  outline: none;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+}
+
+.input {
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 24px;
+  width: 79%;
+  height: 39px;
+  font-family: 'Roboto slab', serif;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+input:required {
+  box-shadow:none;
+}
+input:invalid {
+  box-shadow:none;
+}
+
+
+input {
+  outline: none;
+}
+
+// Remove border and padding in Firefox
+::-moz-focus-outer, ::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input::-moz-range-thumb {
+  border: none;
+}
+
+input:required:focus:valid {
+  color: $sea-color;
+}
+
+::-webkit-input-placeholder {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: Roboto slab, serif;
+}
+
+::placeholder {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: Roboto slab, serif;
+}
+
+::-webkit-inner-spin-button {
+  display: none
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+#placeholder {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.inputbox {
+  border-bottom: 2px solid #ffffff;
+  //margin-bottom: 40px;
+  width: 100%;
+  .material-icons {
+    font-size: 24px;
+    color: lightgray;
+    padding-top: 10px;
+  }
+}
+
+hr {
+  clear: both;
+  border: none
+}
+
+.yellow {
+  color: yellow;
+}
+
+.bigger {
+  font-size: 24px;
+}
+
+.bold {
+  font-weight: 700
+}
+
+.shadow {
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.blue {
+  color: $myblue;
+}
+
+.red {
+  color: #FB887C;
+}
+
+.tooltip {
+  width: 95%;
+  display: inline-block;
+  height: auto;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: lighter;
+  position: absolute;
+  z-index: 10;
+  font-family: 'Lato', sans-serif;
+}
+
+.tooltip i {
+  position: absolute;
+  top: 99%;
+  left: 95%;
+  margin-left: -15px;
+  width: 30px;
+  height: 15px;
+  overflow: hidden;
+}
+
+.tooltip i::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.padding-top {
+  padding-top: 20px
+}
+
+.validation-process {
+  color: $sea-color;
+  font-size: 15px;
+  border-top: $sea-color 2px solid;
+  margin-top: -2px;
+  font-family: 'Lato', sans-serif;
+}
+
+.validation-error {
+  color: $myred;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  border-top: $myred 2px solid;
+  margin-top: -2px;
+  span{
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  body {
+    width: 100%;
+  }
+  .wrapper {
+    width: 290px;
+    margin: auto;
+  }
+
+  .bigger {
+    font-size: 21px;
+  }
+  .input {
+    width: 75%;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    font-weight: 100;
+  }
+
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 24pt;
+    line-height: 30pt;
+  }
+  h4 {
+    font-size: 14px;
+  }
+
+}

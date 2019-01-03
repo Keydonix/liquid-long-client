@@ -1,0 +1,24 @@
+<h4>How much ETH would you like to leverage?</h4>
+
+<div class="inputbox">
+  <input type="number"
+         [ngModel]="numberValue" (ngModelChange)="setValue($event)"
+         [min]="minValue"
+         [max]="maxValue"
+         [step]="minValue"
+         class="input"
+         placeholder="Type the amount between {{minValue}}...{{maxValue}}"
+  />
+  <span class="yellow bigger bold">ETH</span>
+  <span class="material-icons right cursorPointer" (click)="toggleToolTip()">help</span>
+</div>
+
+<div class="validation-error" *ngIf="numberValue < minValue || numberValue > maxValue">
+  <span>Please enter a number between {{minValue}} and {{maxValue}}</span>
+</div>
+
+
+<div class="tooltip shadow" *ngIf="isShowTooltip">
+  Some explanation text with <a href="#">external links</a> goes here
+  <i></i>
+</div>

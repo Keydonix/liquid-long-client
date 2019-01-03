@@ -1,0 +1,48 @@
+<h4>How much leverage would you like to have?</h4>
+
+<div class="input-wrapper">
+  <span class="material-icons">verified_user</span>
+  <span class="thumb-value" *ngIf="numberValue" [style]="positionOnScale">
+    x{{numberValue}}
+  </span>
+  <input type="range"
+         [ngModel]="numberValue" (ngModelChange)="setValue($event)"
+         min="1"
+         max="3"
+         step="0.01"
+         title="" class="range"
+         [class.show-thumb]="numberValue"
+         [class.hide-thumb]="!numberValue"
+  />
+  <span class="material-icons"><img src="assets/high_priority.svg"/>
+    </span>
+</div>
+
+<div class="values shadow">
+  <span (click)="setValue(1.05)" class="cursorPointer">1.05</span>
+  <span (click)="setValue(1.50)" class="cursorPointer">1.50</span>
+  <span (click)="setValue(2.00)" class="cursorPointer">2.00</span>
+  <span (click)="setValue(2.50)" class="cursorPointer">2.50</span>
+  <span (click)="setValue(2.95)" class="cursorPointer last">2.95</span>
+</div>
+
+<div class="inputbox">
+  <input [ngModel]="numberValue" (ngModelChange)="setValue($event)"
+         type="number" min="1" max="3" step="0.01" maxlength="5"
+         class="input" placeholder="Type the multiplier or choose it above"
+  />
+  <span class="material-icons right cursorPointer" (click)="toggleToolTip()">help</span>
+</div>
+
+<div class="validation-process" *ngIf="false">
+  Please, enter your value
+</div>
+<div class="validation-error" *ngIf="numberValue < 1 || numberValue > 3">
+  <span>Please enter a number between 1 and 3</span>
+</div>
+
+
+<div class="tooltip shadow" *ngIf="isShowTooltip">
+  Some explanation text with <a href="#">external links</a> goes here
+  <i></i>
+</div>

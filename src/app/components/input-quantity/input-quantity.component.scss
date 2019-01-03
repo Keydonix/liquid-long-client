@@ -1,0 +1,10 @@
+$myred: #FE5F5B;
+.tooltip {
+  top: -35px;
+}
+
+@media only screen and (max-width: 500px) {
+  .tooltip i {
+    top: 98%;
+  }
+}
