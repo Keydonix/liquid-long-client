@@ -17,21 +17,23 @@
     }
 
   }
-  div + div {
-    margin-bottom: 150px;
-    p {
-      font-size: 30px;
-      margin-bottom: 24px;
-    }
-    .yellow {
-      font-size: 42px;
-    }
-  }
-  div + div + div {
+  .footer {
     margin-bottom: 20px;
     font-size: 20px;
     .yellow {
       font-size: 20px;
+    }
+  }
+  ul {
+    margin: auto;
+    width: fit-content;
+    li {
+      width: fit-content;
+      p {
+        width: auto;
+        text-align: left;
+        font-size: 32px;
+      }
     }
   }
 }
