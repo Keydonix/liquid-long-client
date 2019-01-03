@@ -8,10 +8,10 @@
   </div>
 </div>
 
-<div class="warning" *ngIf="this.middleware.isAccessDenied$ | async">
+<div class="warning" *ngIf="!(this.middleware.ethereumEnabled$ | async)">
   <div class="inner">
     <div class="bold icon"><img src="assets/warning.png"/>Warning</div>
-    <div class="text">To utilize all of the features of this tool, you must allow Ethereum account access. <a href class="red nobreak">Re-prompt for account access.</a>
+    <div class="text">To utilize all of the features of this tool, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Re-prompt for account access.</span>
     </div>
   </div>
 </div>
