@@ -249,12 +249,6 @@ export class MiddlewareService {
         feeLimitInEth,
       ));
 
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     reject();
-    //   }, 1000);
-    // });
-
   }
 
 }

@@ -1,32 +1,30 @@
 .wrapper {
   margin-top: 200px;
-  p {
-    margin: 0
-  }
   img {
     margin-bottom: 35px;
   }
-  div {
+  .success {
     margin-bottom: 120px;
-    p {
+    .heading {
       font-size: 48px;
+      margin: 0px;
       margin-bottom: 28px;
     }
-    p + p {
-      font-size: 30px;
+    ul {
+      margin: auto;
+      width: fit-content;
+      li {
+        width: fit-content;
+        p {
+          width: auto;
+          text-align: left;
+          font-size: 32px;
+          margin: 0px;
+        }
+      }
     }
   }
-  div + div {
-    margin-bottom: 120px;
-    p {
-      font-size: 30px;
-      margin-bottom: 38px;
-    }
-    .yellow {
-      font-size: 42px;
-    }
-  }
-  div + div + div {
+  .footer {
     margin-bottom: 60px;
     font-size: 20px;
     .yellow {

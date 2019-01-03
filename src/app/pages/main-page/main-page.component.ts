@@ -103,17 +103,12 @@ export class MainPageComponent implements OnInit {
 
   onSubmit() {
     this.logger.log(`Transaction submitted with values (${this.leverage}, ${this.quantity}, ${this.exchangeCost}, ${this.serviceFee}).`);
-    // setTimeout(() => {
-    //   this.confirm$.emit(true);
-    // }, 0);
-    // this.confirm$.emit(true);
-    // return;
 
     this.middleware.submit(this.leverage, this.quantity, this.exchangeCost, this.serviceFee)
-      .then(() => {
+      .then(cdpId => {
         this.logger.log(`Transaction confirmed!`);
         this.confirmEmitter$.emit(true);
-        this.router.navigateByUrl('/succeed');
+        this.router.navigateByUrl(`/succeed/${cdpId}`);
       })
       .catch(err => {
         this.logger.error(`Transaction rejected!`, err);
