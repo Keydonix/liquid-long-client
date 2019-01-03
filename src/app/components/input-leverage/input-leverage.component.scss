@@ -130,7 +130,11 @@ input.hide-thumb::-moz-range-thumb {
 }
 
 .tooltip {
-  top: 50px;
+  bottom: 45px;
+}
+
+.tooltip-button {
+  user-select: none;
 }
 
 input {

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SucceedPageComponent } from './pages/succeed-page/succeed-page.component';
 import { FailPageComponent } from './pages/fail-page/fail-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { OutsideClickable } from './directives/outside-clickable';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     MainPageComponent,
     SucceedPageComponent,
     FailPageComponent,
+
+    OutsideClickable,
   ],
   imports: [
     BrowserModule,

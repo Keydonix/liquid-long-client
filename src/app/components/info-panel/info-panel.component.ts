@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { ToolTipComponent } from '../tool-tip-component';
 import { MiddlewareService } from '../../services/middleware/middleware.service';
 import { combineLatest, Observable, fromEvent, merge } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -10,7 +9,7 @@ import { map, startWith } from 'rxjs/operators';
   templateUrl: './info-panel.component.html',
   styleUrls: ['./info-panel.component.scss']
 })
-export class InfoPanelComponent extends ToolTipComponent implements OnInit {
+export class InfoPanelComponent implements OnInit {
 
   @Input() leverage$: Observable<number>;
   @Input() quantity$: Observable<number>;
@@ -38,9 +37,7 @@ export class InfoPanelComponent extends ToolTipComponent implements OnInit {
 
   constructor(
     private middleware: MiddlewareService,
-  ) {
-    super();
-  }
+  ) { }
 
   ngOnInit() {
     this.liquidationPrice$ = this.middleware.liquidationPrice$(this.leverage$);

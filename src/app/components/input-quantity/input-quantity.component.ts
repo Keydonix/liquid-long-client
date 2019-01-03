@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToolTipComponent } from '../tool-tip-component';
+import { TooltipComponent } from '../tooltip-component';
 import { environment } from '../../../environments/environment';
 
 
@@ -8,14 +8,12 @@ import { environment } from '../../../environments/environment';
   templateUrl: './input-quantity.component.html',
   styleUrls: ['./input-quantity.component.scss']
 })
-export class InputQuantityComponent extends ToolTipComponent implements OnInit {
+export class InputQuantityComponent extends TooltipComponent implements OnInit {
 
-  @Input() maxValue;
+  @Input() maxValue: number;
   @Output() value$ = new EventEmitter<number>();
   numberValue: number;
   minValue = environment.minQuantity;
-
-  constructor() { super(); }
 
   ngOnInit() { }
 

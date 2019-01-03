@@ -2,7 +2,7 @@
 
 <div class="final shadow">
   <div class="left">
-    <div>TOTAL PRICE<span class="material-icons cursorPointer" (click)="toggleToolTip()">help</span></div>
+    <div>TOTAL PRICE<span class="material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span></div>
 
     <div class="grid" *ngIf="totalPrice && exchangeCost; then knownValues; else unknownValues"></div>
     <ng-template class="grid" #knownValues>
@@ -23,7 +23,7 @@
   </div>
 
 
-  <div class="tooltip" *ngIf="isShowTooltip">
+  <div class="tooltip" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
     <div class="left">
       <p class="bold">Total Price</p>
       <p>Leverage Amount</p>

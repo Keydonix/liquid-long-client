@@ -52,7 +52,7 @@
 .tooltip {
   width: 46%;
   left: 0;
-  top: -140px;
+  bottom: 95px;
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 2px 0 rgba(0, 0, 0, 0.19);
   font-size: 16px;
   color: #474747;
@@ -74,7 +74,11 @@
 
 .tooltip i {
   top: 100%;
-  left: 30%;
+  left: 28%;
+}
+
+.tooltip-button {
+  user-select: none;
 }
 
 .padding-top {

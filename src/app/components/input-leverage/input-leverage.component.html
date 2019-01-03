@@ -31,7 +31,7 @@
          type="number" min="1" max="3" step="0.01" maxlength="5"
          class="input" placeholder="Type the multiplier or choose it above"
   />
-  <span class="material-icons right cursorPointer" (click)="toggleToolTip()">help</span>
+  <span class="material-icons right cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
 <div class="validation-process" *ngIf="false">
@@ -42,7 +42,7 @@
 </div>
 
 
-<div class="tooltip shadow" *ngIf="isShowTooltip">
-  Some explanation text with <a href="#">external links</a> goes here
+<div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
+  <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/27724-what-is-leverage">Leverage</a> multiplies your profit/loss when the price of ETH moves.
   <i></i>
 </div>

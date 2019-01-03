@@ -1,6 +1,10 @@
 $myred: #FE5F5B;
 .tooltip {
-  top: -35px;
+  bottom: 45px;
+}
+
+.tooltip-button {
+  user-select: none;
 }
 
 @media only screen and (max-width: 500px) {
