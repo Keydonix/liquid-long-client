@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { combineLatest, concat, Observable, Subject, BehaviorSubject } from 'rxjs';
-import { ignoreElements, map, mergeMap, startWith } from 'rxjs/operators';
+import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { environment } from '../../../environments/environment';
 
@@ -28,8 +28,8 @@ declare global {
 })
 export class MiddlewareService {
   private liquidLong: LiquidLong;
-  private ethereumEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  price$ = new EventEmitter<number>();
+  public ethereumEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public price$ = new EventEmitter<number>();
 
   constructor(private logger: LoggerService) {
     this.liquidLong = this.createLiquidLong();

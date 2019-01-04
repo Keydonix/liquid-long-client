@@ -1,6 +1,6 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MiddlewareService } from '../../services/middleware/middleware.service';
-import { combineLatest, Observable, fromEvent, merge } from 'rxjs';
+import { combineLatest, Observable, fromEvent } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 

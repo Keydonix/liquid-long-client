@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SucceedPageComponent implements OnInit {
 
-  private cdpId: string;
+  public cdpId: string;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "zoltu": {
+    "liquid-long": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/zoltu",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -41,31 +41,34 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "subresourceIntegrity": true,
+              "sourceMap": true,
+              "vendorSourceMap": true,
               "extractCss": true,
-              "namedChunks": false,
+              "commonChunk": true,
+              "namedChunks": true,
+              "vendorChunk": true,
               "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "extractLicenses": false,
+              "baseHref": "./"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "zoltu:build"
+            "browserTarget": "liquid-long:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "zoltu:build:production"
+              "browserTarget": "liquid-long:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "zoltu:build"
+            "browserTarget": "liquid-long:build"
           }
         },
         "test": {
@@ -99,7 +102,7 @@
         }
       }
     },
-    "zoltu-e2e": {
+    "liquid-long-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,11 +110,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "zoltu:serve"
+            "devServerTarget": "liquid-long:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "zoltu:serve:production"
+              "devServerTarget": "liquid-long:serve:production"
             }
           }
         },
@@ -127,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "zoltu"
+  "defaultProject": "liquid-long"
 }

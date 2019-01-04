@@ -1,5 +1,5 @@
 {
-  "name": "zoltu",
+  "name": "@keydonix/liquid-long-client",
   "version": "0.1.9",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "showip": "ifconfig | grep 192.168",
     "build": "ng build",
     "ngh-build": "ng build --prod --build-optimizer=false --base-href 'https://asnov.github.io/finapp/'",
-    "ngh-publish": "ngh -d dist/zoltu/",
+    "ngh-publish": "ngh -d dist/",
     "ngh": "npm run ngh-build && npm run ngh-publish",
     "test": "ng test",
     "lint": "ng lint",
