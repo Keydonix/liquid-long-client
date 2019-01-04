@@ -1,0 +1,12 @@
+/.git/
+/dist/
+/docs/
+/e2e/
+/node_modules/
+/.dockerignore
+/.editorconfig
+/.gitignore
+/Dockerfile
+/README.md
+/wallaby.js
+/webStormSettings.xml
