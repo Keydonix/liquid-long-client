@@ -57,9 +57,8 @@ export class MainPageComponent implements OnInit {
   confirm$ = this.confirmEmitter$.asObservable();
 
   constructor(
-    private middleware: MiddlewareService,
+    public middleware: MiddlewareService,
     private router: Router,
-    private route: ActivatedRoute,
     private logger: LoggerService,
   ) {
     this.leverage$.subscribe(leverage => {
@@ -80,26 +79,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    if (this.isWrongBrowser) {
-      setTimeout(() => {
-        // window.location.reload(); // FIXME: it is not cross platform
-      }, environment.wrongBrowserReloadInterval);
-    } else {
-      // temporary testing interface usign url params TODO: remove it before release
-      const params = this.route.snapshot.queryParamMap.get('openPosition');
-      if (params && params.length) {  // && !environment.production
-        this.logger.log(`Calling openPosition(${params});`);
-        this.middleware.submit.apply(this.middleware, params.split(','))
-          .then(() => {
-            this.logger.log(`Transaction confirmed!`);
-          })
-          .catch(err => {
-            this.logger.error(`Transaction rejected!`, err);
-          });
-      }
-    }
-  }
+  ngOnInit() { }
 
   enableEthereumReprompt() {
     this.middleware.enableEthereum().catch(() => {})
