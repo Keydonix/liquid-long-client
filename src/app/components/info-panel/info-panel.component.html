@@ -1,30 +1,24 @@
 <div class="prices">
-  <div class="first">
-    <div>Current ETH Price</div>
-    <div class="price">
-      {{price$ | async | currency}}
-    </div>
+  <div class="current title">Current ETH Price</div>
+  <div class="current price">
+    {{price$ | async | currency}}
   </div>
-  <div>
-    <div>Liquidation Price</div>
-    <div class="price red">
-      {{liquidationPrice$ | async | currency}}
-    </div>
+  <div class="liquidation title">Liquidation Price</div>
+  <div class="liquidation price red">
+    {{liquidationPrice$ | async | currency}}
   </div>
-  <div>
-    <div>Current Portfolio Value</div>
-    <div class="price">
-      {{portfolioValue$ | async | currency}}
-    </div>
+  <div class="position title">Position Value</div>
+  <div class="position price">
+    {{portfolioValue$ | async | currency}}
   </div>
 </div>
 
-<hr />
-<button class="collapsible" (click)="clickMoreDetails()" [class.hidden]="isShowDetails">More Details
-  <span class="material-icons">keyboard_arrow_down</span>
+<button class="collapsible" (click)="clickMoreDetails()" [class.hidden]="isExpanded">
+  More Details <span class="material-icons">keyboard_arrow_down</span>
 </button>
-<div class="expand" [hidden]="isHideDetails">
-  <div class="descriptions" [style.visibility]="!(leverage$ | async) ? 'hidden' : ''">
+
+<div class="expand" [class.hidden]="!isExpanded">
+  <div class="legend" [style.visibility]="!(leverage$ | async) ? 'hidden' : ''">
     <div class="left">
       <p><img src="assets/line-green-white.png" width="30" height="6" /></p>
       <p><img src="assets/line-dashed.png" width="30" height="3" /></p>
@@ -70,6 +64,7 @@
     <i></i>
   </div>
 </div>
-<div class="closebutton" (click)="clickMoreDetails()" [class.hidden]="isHideDetails">Close details <span class="material-icons">
-    keyboard_arrow_up
-  </span></div>
+
+<div class="closebutton" (click)="clickMoreDetails()" [class.hidden]="!isExpanded">
+  Less Details <span class="material-icons">keyboard_arrow_up</span>
+</div>

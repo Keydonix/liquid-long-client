@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { MiddlewareService } from '../../services/middleware/middleware.service';
 import { combineLatest } from 'rxjs';
-import { catchError, distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, shareReplay, startWith } from 'rxjs/operators';
 import { LoggerService } from '../../services/logger/logger.service';
 
 
@@ -38,7 +38,7 @@ export class MainPageComponent implements OnInit {
   exchangeCostEmitter$ = new EventEmitter<number>();
 
   // Number input fires valueChanges twice: https://github.com/angular/angular/issues/12540
-  leverage$ = this.leverageEmitter$.asObservable().pipe(distinctUntilChanged(), shareReplay(1));
+  leverage$ = this.leverageEmitter$.asObservable().pipe(startWith(2), distinctUntilChanged(), shareReplay(1));
   quantity$ = this.quantityEmitter$.asObservable().pipe(distinctUntilChanged(), shareReplay(1));
   exchangeCost$ = this.exchangeCostEmitter$.asObservable().pipe(distinctUntilChanged());
 

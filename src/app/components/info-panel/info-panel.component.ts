@@ -20,8 +20,7 @@ export class InfoPanelComponent implements OnInit {
   @ViewChild('dottedLine') dottedLine: ElementRef<HTMLDivElement>;
   @ViewChild('toolTipBox') toolTipBox: ElementRef<HTMLDivElement>;
   @ViewChild('bottomLineText') bottomLineText: ElementRef<HTMLDivElement>;
-  isHideDetails = true;
-  isShowDetails = false;
+  isExpanded = false;
   isMouseInChart = false;
 
   liquidationPrice$: Observable<number>;
@@ -84,8 +83,7 @@ export class InfoPanelComponent implements OnInit {
   }
 
   clickMoreDetails() {
-    this.isHideDetails = !this.isHideDetails;
-    this.isShowDetails = !this.isShowDetails;
+    this.isExpanded = !this.isExpanded;
   }
 
   mouseMoveInChart = ([priceToGain100, liquidationPrice, mouseEvent]: [number, number, MouseEvent]) => {
@@ -99,7 +97,7 @@ export class InfoPanelComponent implements OnInit {
     const mouseRelativeToExpandY = mouseEvent.pageY - expandPageY;
     const gradientHeight = gradientElement.getBoundingClientRect().height;
     this.priceLine.nativeElement.setAttribute('style', `top: ${mouseRelativeToGradientY - 5}px`);
-    this.toolTipBox.nativeElement.setAttribute('style', `top: ${mouseRelativeToExpandY}px`);
+    this.toolTipBox.nativeElement.setAttribute('style', `top: ${mouseRelativeToExpandY - 86}px`);
     return Math.round(priceToGain100 - (mouseRelativeToGradientY / gradientHeight) * (priceToGain100 - liquidationPrice));
   }
 

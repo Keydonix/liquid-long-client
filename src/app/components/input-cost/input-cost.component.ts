@@ -12,8 +12,8 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
 
   @Input() exchangeCostRangeLimits$: Observable<{ low: number, high: number }>;
   @Output() value$ = new EventEmitter<number>();
-  minValue = 0;
-  maxValue = 250;
+  minValue = 0.01;
+  maxValue = 0.05;
   numberValue: number;
 
 
@@ -31,8 +31,7 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
       }
       // we found the most significant digit, return `numberOfSignificantFigures` more figures after that (inclusive)
       const leastSignificantFigure = mostSignificantFigure + numberOfSignificantFigures - 1;
-      // we round by getting the digit we care about into the 1s place, and then calling the rounding function,
-      // then adding an appropriate number of zeros back
+      // we round by getting the digit we care about into the 1s place, and then calling the rounding function, then adding an appropriate number of zeros back
       return roundingFunction(value * 10 ** leastSignificantFigure) * 10 ** (-leastSignificantFigure);
     }
     // only reachable if the value is _really_ close to 0
@@ -43,7 +42,7 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
     this.exchangeCostRangeLimits$.subscribe(({low, high}) => {
       this.minValue = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
       this.maxValue = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
-      this.value$.emit((this.minValue + this.maxValue) / 2);
+      this.value$.emit(this.minValue);
     });
   }
 

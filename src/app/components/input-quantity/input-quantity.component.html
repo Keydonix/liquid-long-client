@@ -1,4 +1,4 @@
-<h4>How much ETH would you like to leverage?</h4>
+<h4 class="input-label">How much ETH would you like to leverage?</h4>
 
 <div class="inputbox">
   <input type="number"
@@ -7,14 +7,14 @@
          [max]="maxValue"
          [step]="minValue"
          class="input"
-         placeholder="Type the amount between {{minValue}}...{{maxValue}}"
+         placeholder="Between {{minValue}} and {{maxValue}}"
   />
-  <span class="yellow bigger bold">ETH</span>
-  <span class="material-icons right cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
+  <span class="input-suffix yellow bigger bold">ETH</span>
+  <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
-<div class="validation-error" *ngIf="numberValue < minValue || numberValue > maxValue">
-  <span>Please enter a number between {{minValue}} and {{maxValue}}</span>
+<div class="validation-error" [style.visibility]="(numberValue < minValue || numberValue > maxValue) ? 'visible' : 'hidden'">
+  <span>Between {{minValue}} and {{maxValue}}</span>
 </div>
 
 

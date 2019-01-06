@@ -1,21 +1,14 @@
-<h4>How much leverage would you like to have?</h4>
+<h4 class="input-label">How much leverage would you like to have?</h4>
 
-<div class="input-wrapper">
+<div class="range-wrapper">
   <span class="material-icons">verified_user</span>
-  <span class="thumb-value" *ngIf="numberValue" [style]="positionOnScale">
-    x{{numberValue}}
-  </span>
-  <input type="range"
-         [ngModel]="numberValue" (ngModelChange)="setValue($event)"
-         min="1"
-         max="3"
-         step="0.01"
-         title="" class="range"
-         [class.show-thumb]="numberValue"
-         [class.hide-thumb]="!numberValue"
+  <input
+      class="range"
+      type="range" min="1" max="3" step="0.01"
+      [ngModel]="numberValue"
+      (ngModelChange)="setValue($event)"
   />
-  <span class="material-icons"><img src="assets/high_priority.svg"/>
-    </span>
+  <span class="material-icons">warning</span>
 </div>
 
 <div class="values shadow">
@@ -27,18 +20,22 @@
 </div>
 
 <div class="inputbox">
-  <input [ngModel]="numberValue" (ngModelChange)="setValue($event)"
-         type="number" min="1" max="3" step="0.01" maxlength="5"
-         class="input" placeholder="Type the multiplier or choose it above"
+  <input
+      [ngModel]="numberValue"
+      (ngModelChange)="setValue($event)"
+      type="number"
+      min="1"
+      max="3"
+      step="0.01"
+      maxlength="5"
+      class="input"
+      placeholder="Type the multiplier or choose it above"
   />
-  <span class="material-icons right cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
+  <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
-<div class="validation-process" *ngIf="false">
-  Please, enter your value
-</div>
-<div class="validation-error" *ngIf="numberValue < 1 || numberValue > 3">
-  <span>Please enter a number between 1 and 3</span>
+<div class="validation-error" [style.visibility]="(numberValue < 1 || numberValue > 3) ? 'visible' : 'hidden'">
+  <span>Between 1 and 3</span>
 </div>
 
 

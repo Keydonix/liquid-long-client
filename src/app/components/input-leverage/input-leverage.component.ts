@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class InputLeverageComponent extends TooltipComponent implements OnInit {
 
   @Output() value$ = new EventEmitter<number>();
-  numberValue: number;
+  numberValue: number = 2;
 
   constructor(
     private sanitizer: DomSanitizer,

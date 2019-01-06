@@ -1,70 +1,64 @@
 .wrapper {
-  margin-top: 200px;
+  margin-top: 240px;
+  color: white;
+  text-align: center;
+
+  .header {
+    font-size: 48px;
+    margin: 20px 0px;
+  }
   img {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
   }
-  .success {
-    margin-bottom: 120px;
-    .heading {
-      font-size: 48px;
-      margin: 0px;
-      margin-bottom: 28px;
-    }
-    ul {
-      margin: auto;
-      width: fit-content;
-      li {
-        width: fit-content;
-        p {
-          width: auto;
-          text-align: left;
-          font-size: 32px;
-          margin: 0px;
-        }
-      }
-    }
+  img + p {
+    font-weight: normal;
   }
+
   .footer {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     font-size: 20px;
     .yellow {
       font-size: 20px;
     }
   }
+  ul {
+    margin: auto;
+    width: fit-content;
+    li {
+      width: fit-content;
+      p {
+        width: auto;
+        text-align: left;
+        font-size: 32px;
+      }
+    }
+  }
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 830px) {
 
   .wrapper {
+    min-width: 260px;
     margin-top: 70px;
-    div {
-      margin-bottom: 48px;
-      p {
-        font-size: 27px;
-        margin-bottom: 26px;
-      }
-      p + p {
-        font-size: 18px;
-        font-weight: 100;
+    padding: 5px;
+
+    .header {
+      font-size: 38px;
+    }
+
+    ul {
+      list-style: none;
+      > li {
+        > p {
+          font-size: 28px;
+          margin: 5px;
+        }
       }
     }
-    div + div {
-      margin-bottom: 108px;
-      p {
-        font-size: 15px;
-        margin-bottom: 8px;
-        font-weight: 100;
-      }
-      .yellow {
-        font-size: 27px;
-      }
-    }
-    div + div + div {
-      margin-bottom: 20px;
-      .yellow {
-        font-size: 20px;
-      }
+
+    .footer {
+      font-size: 20px;
     }
   }
 
