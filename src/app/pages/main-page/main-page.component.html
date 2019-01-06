@@ -1,69 +1,52 @@
-<div class="warning" *ngIf="isWrongBrowser">
-  <div class="inner">
-    <div class="bold icon"><img src="assets/warning.png" alt="warning sign"/>Warning</div>
-    <div class="text">To utilize all of the features of this tool, you must use an Ethereum enabled browser such as <a href="https://brave.com" target="_blank"
-      class="red">Brave</a> or a browser extension like <a href="https://metamask.io" target="_blank"
-      class="red">MetaMask</a>.
-    </div>
-  </div>
-</div>
-
-<div class="warning" *ngIf="!(this.middleware.ethereumEnabled$ | async)">
-  <div class="inner">
-    <div class="bold icon"><img src="assets/warning.png"/>Warning</div>
-    <div class="text">To utilize all of the features of this tool, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Re-prompt for account access.</span>
-    </div>
-  </div>
-</div>
-
-<div class="warning" *ngIf="isNotConnected">
-  <div class="inner">
-    <div class="bold icon"><img src="assets/warning.png" alt="warning sign"/>Timeout</div>
-    <div class="text">Please connect your browser to the Etherium network.</div>
-  </div>
-</div>
-
 <div class="wrapper">
-  <h1>Open a Leveraged ETH position</h1>
-
-  <div class="container">
-    <div class="left-main">
-
-      <div class="row">
-        <app-input-leverage (value$)="leverageEmitter$.emit($event)"></app-input-leverage>
-      </div>
-
-      <div class="row">
-        <app-input-quantity [maxValue]="maxQuantity" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
-      </div>
-
-      <div class="row">
-        <app-input-fee [exchangeCostRangeLimits$]="exchangeCostRangeLimits$" (value$)="exchangeCostEmitter$.emit($event)"></app-input-fee>
+  <div>
+    <div class="banner" *ngIf="isWrongBrowser">
+      <div class="bold icon"><img src="assets/warning.png" alt="warning sign"/>Warning</div>
+      <div class="text">To utilize all of the features of this tool, you must use an Ethereum enabled browser such as <a href="https://brave.com" target="_blank"
+        class="red">Brave</a> or a browser extension like <a href="https://metamask.io" target="_blank"
+        class="red">MetaMask</a>.
       </div>
     </div>
 
-    <div class="right-main">
-      <app-info-panel
-        [leverage$]="leverage$"
-        [quantity$]="quantity$"
-        [price$]="price$"
-      ></app-info-panel>
+    <div class="banner" *ngIf="!(this.middleware.ethereumEnabled$ | async)">
+      <div class="bold icon"><img src="assets/warning.png"/>Warning</div>
+      <div class="text">To utilize all of the features of this tool, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Re-prompt for account access.</span>
+      </div>
+    </div>
+
+    <div class="banner" *ngIf="isNotConnected">
+      <div class="bold icon"><img src="assets/warning.png" alt="warning sign"/>Timeout</div>
+      <div class="text">Please connect your browser to the Etherium network.</div>
     </div>
   </div>
 
-  <app-confirm-panel
-    [totalPrice]="totalPrice$ | async"
-    [leverageAmount]="quantity$ | async"
-    [exchangeCost]="exchangeCost$ | async"
-    [serviceFee]="serviceFee$ | async"
-    [confirm$]="confirm$"
-    (submit$)="onSubmit()"></app-confirm-panel>
-</div>
+  <div style="display: flex">
+    <div class="outer-grid">
+      <h1 class="header">Open a Leveraged ETH position</h1>
 
-<div class="debugWindow" title="Debug window" *ngIf="isDebug">
-  <!--<h4>Debug window</h4>-->
-  <p>leverage={{leverage$ | async}}</p>
-  <p>quantity={{quantity$ | async}}</p>
-  <p>fee={{exchangeCost$ | async}}</p>
-  <p>price={{price$ | async}}</p>
+      <div class="left-main inner-grid">
+        <app-input-quantity class="input-quantity" [maxValue]="maxQuantity" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
+        <app-input-leverage class="input-leverage" (value$)="leverageEmitter$.emit($event)"></app-input-leverage>
+        <app-input-fee class="input-cost" [exchangeCostRangeLimits$]="exchangeCostRangeLimits$" (value$)="exchangeCostEmitter$.emit($event)" [style.visibility]="(exchangeCostRangeLimits$ | async) ? 'visible' : 'hidden'"></app-input-fee>
+      </div>
+
+      <div class="right-main">
+        <app-info-panel
+          [leverage$]="leverage$"
+          [quantity$]="quantity$"
+          [price$]="price$"
+        ></app-info-panel>
+      </div>
+
+      <app-confirm-panel class='confirm-panel'
+        [totalPrice]="totalPrice$ | async"
+        [leverageAmount]="quantity$ | async"
+        [exchangeCost]="exchangeCost$ | async"
+        [serviceFee]="serviceFee$ | async"
+        [confirm$]="confirm$"
+        (submit$)="onSubmit()"></app-confirm-panel>
+
+      <div class="footer">Have questions? <a href="https://help.keydonix.com" class="yellow">Get answers</a></div>
+    </div>
+  </div>
 </div>

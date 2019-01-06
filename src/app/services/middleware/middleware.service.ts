@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, filter } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { environment } from '../../../environments/environment';
 
@@ -165,8 +165,11 @@ export class MiddlewareService {
     this.logger.log(`method estimatedCostsInEth$`);
     return combineLatest(leverageMultiplier$, leverageSizeInEth$)
       .pipe(
+        filter(([leverageMultiplier, leverageSizeInEth]) => {
+          return !!leverageMultiplier && !!leverageSizeInEth
+        }),
         mergeMap(([leverageMultiplier, leverageSizeInEth]) =>
-          fromPromise(this.liquidLong.getEstimatedCostsInEth(leverageMultiplier, leverageSizeInEth)),
+          fromPromise(this.liquidLong.getEstimatedCostsInEth(leverageMultiplier, leverageSizeInEth))
         ),
       );
   }

@@ -2,24 +2,26 @@ $myred: #FE5F5B;
 $myblue: #4f95e5;
 $sea-color: #16D0C0;
 
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  min-width: auto;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
+
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: #00385a;
-  margin: 0;
 }
 
 body, button {
   font-family: Roboto slab, serif;
   font-weight: 300;
-}
-
-.wrapper {
-  color: white;
-  font-weight: 300;
-  text-align: center;
-  max-width: 800px;
-  margin: auto;
-
 }
 
 .lato {
@@ -74,50 +76,20 @@ input[type=range]::-moz-range-thumb {
   border: none;
 }
 
-.input {
-  border: none;
-  background: none;
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 24px;
-  width: 79%;
-  height: 39px;
-  font-family: 'Roboto slab', serif;
-}
-
-.input:focus {
-  border: none;
-  outline: none;
-}
-
-input:required {
-  box-shadow:none;
-}
-input:invalid {
-  box-shadow:none;
-}
-
-
-input {
-  outline: none;
-}
-
 // Remove border and padding in Firefox
 ::-moz-focus-outer, ::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-input::-moz-range-thumb {
-  border: none;
-}
-
-input:required:focus:valid {
-  color: $sea-color;
-}
-
 ::-webkit-input-placeholder {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: Roboto slab, serif;
+}
+
+::-ms-input-placeholder {
   color: #ffffff;
   font-size: 18px;
   font-weight: 100;
@@ -135,23 +107,55 @@ input:required:focus:valid {
   display: none
 }
 
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
 #placeholder {
   color: #ffffff;
   font-weight: bold;
 }
 
+.input-label {
+  margin-block-end: 1em;
+}
 .inputbox {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
   border-bottom: 2px solid #ffffff;
-  //margin-bottom: 40px;
-  width: 100%;
+  .input {
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 24px;
+    flex-grow: 1;
+    min-width: 0;
+    height: 39px;
+    font-family: 'Roboto slab', serif;
+  }
+  input:required {
+    box-shadow:none;
+  }
+  input:invalid {
+    box-shadow:none;
+  }
+  input {
+    outline: none;
+  }
+  input:required:focus:valid {
+    color: $sea-color;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .input-suffix {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
   .material-icons {
     font-size: 24px;
     color: lightgray;
-    padding-top: 10px;
   }
 }
 
@@ -184,8 +188,11 @@ hr {
   color: #FB887C;
 }
 
+.tooltip-button {
+  user-select: none;
+}
+
 .tooltip {
-  width: 95%;
   display: inline-block;
   height: auto;
   background-color: white;
@@ -247,34 +254,17 @@ hr {
   font-family: 'Lato', sans-serif;
   border-top: $myred 2px solid;
   margin-top: -2px;
-  span{
-    position: absolute;
-  }
 }
 
-@media only screen and (max-width: 500px) {
-
-  body {
-    width: 100%;
-  }
-  .wrapper {
-    width: 290px;
-    margin: auto;
-  }
+@media only screen and (max-width: 830px) {
 
   .bigger {
     font-size: 21px;
   }
-  .input {
-    width: 75%;
-  }
-  ::-webkit-input-placeholder {
-    font-size: 14px;
-    font-weight: 100;
-  }
 
   ::-webkit-input-placeholder {
     font-size: 14px;
+    font-weight: 100;
   }
 
   h1 {

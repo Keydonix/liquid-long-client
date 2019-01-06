@@ -1,31 +1,35 @@
-<h4>How much are you willing to pay in costs?</h4>
+<h4 class="input-label">How much are you willing to pay in costs?</h4>
 
-<div class="input-wrapper2">
-  <input type="range"
-         [ngModel]="numberValue" (ngModelChange)="setValue($event)"
-         [min]="minValue"
-         [max]="maxValue"
-         [step]="(maxValue - minValue)/100"
-         [value]="(maxValue + minValue)/2 | number:'1.1-9'"
-         class="range2" title=""/>
-  <span class="triangle-overlay firefox"></span>
-  <span class="triangle firefox"></span>
-  <p>
+<div class="range-wrapper">
+  <div class="slider-wrapper">
+    <span class="range-background"></span>
+    <input
+        type="range"
+        [ngModel]="numberValue"
+        (ngModelChange)="setValue($event)"
+        [min]="minValue"
+        [max]="maxValue"
+        [step]="(maxValue - minValue)/100"
+        [value]="minValue"
+    >
+  </div>
+  <p class="legend">
     <span class="left">{{minValue | number:'1.1-9'}}</span> recommended values <span class="right">{{maxValue | number:'1.1-9'}}</span>
   </p>
 </div>
 
 <div class="inputbox">
   <input type="number"
-         [ngModel]="numberValue" (ngModelChange)="setValue($event)"
+         [ngModel]="numberValue"
+         (ngModelChange)="setValue($event)"
          [min]="minValue"
          [max]="maxValue"
          [step]="(maxValue - minValue)/100"
-         [value]="(maxValue + minValue)/2 | number:'1.1-9'"
-         class="input" placeholder="Type the amount between {{minValue | number:'1.1-9'}}..{{maxValue | number:'1.1-9'}}"
+         [value]="minValue"
+         class="input" placeholder="Between {{minValue | number:'1.1-9'}} and {{maxValue | number:'1.1-9'}}"
   />
-  <span class="yellow bigger bold">ETH</span>
-  <span class="material-icons right cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
+  <span class="input-suffix yellow bigger bold">ETH</span>
+  <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
 <div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">

@@ -1,38 +1,32 @@
-<hr/>
-
 <div class="final shadow">
-  <div class="left">
+  <div>
     <div>TOTAL PRICE<span class="material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span></div>
 
-    <div class="grid" *ngIf="totalPrice && exchangeCost; then knownValues; else unknownValues"></div>
-    <ng-template class="grid" #knownValues>
+    <div class="total-price" *ngIf="totalPrice && exchangeCost; then knownValues; else unknownValues"></div>
+    <ng-template class="total-price" #knownValues>
       <div class="blue">{{totalPrice | number:'1.1-9'}} ETH</div>
       <div> including {{serviceFee | number:'1.1-9'}} ETH service fee</div>
     </ng-template>
-    <ng-template class="grid" #unknownValues>
+    <ng-template class="total-price" #unknownValues>
       <div class="blue">?</div>
       <div> please enter the values to see the price</div>
     </ng-template>
   </div>
 
-  <div class="right">
-    <button class="shadow"
-            (click)="submit$.emit(true)"
-            [disabled]="isDisabled$ | async">Confirm Transaction
+  <div>
+    <button class="shadow" (click)="submit$.emit(true)" [disabled]="isDisabled$ | async">Confirm Transaction
     </button>
   </div>
 
   <div class="tooltip" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
     <p class="bold" style="grid-column: 1; grid-row: 1">Total Price</p>
-    <p class="bold" style="grid-column: 2; grid-row: 1">{{totalPrice | number:'1.1-9'}} ETH</p>
-    <p style="grid-column: 1; grid-row: 2">Leverage Amount</p>
-    <p style="grid-column: 2; grid-row: 2">{{leverageAmount | number:'1.1-9'}} ETH</p>
-    <p style="grid-column: 1; grid-row: 3">Exchange Cost</p>
-    <p style="grid-column: 2; grid-row: 3">{{exchangeCost | number:'1.1-9'}} ETH</p>
-    <p style="grid-column: 1; grid-row: 4">Service Fee</p>
-    <p style="grid-column: 2; grid-row: 4">{{serviceFee | number:'1.1-9'}} ETH</p>
+    <p class="price bold" style="grid-column: 2; grid-row: 1">{{totalPrice | number:'1.1-9'}} ETH</p>
+    <p class="" style="grid-column: 1; grid-row: 2">Leverage Amount</p>
+    <p class="price" style="grid-column: 2; grid-row: 2">{{leverageAmount | number:'1.1-9'}} ETH</p>
+    <p class="" style="grid-column: 1; grid-row: 3">Exchange Cost</p>
+    <p class="price" style="grid-column: 2; grid-row: 3">{{exchangeCost | number:'1.1-9'}} ETH</p>
+    <p class="" style="grid-column: 1; grid-row: 4">Service Fee</p>
+    <p class="price" style="grid-column: 2; grid-row: 4">{{serviceFee | number:'1.1-9'}} ETH</p>
     <i></i>
   </div>
 </div>
-
-<div class="padding-top">Have questions? <a href="https://help.keydonix.com" class="yellow">Get answers</a></div>

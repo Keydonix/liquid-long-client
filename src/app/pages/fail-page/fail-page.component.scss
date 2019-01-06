@@ -1,22 +1,19 @@
 .wrapper {
   margin-top: 240px;
+  color: white;
+  text-align: center;
+
+  .header {
+    font-size: 48px;
+    margin: 20px 0px;
+  }
   img {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   img + p {
     font-weight: normal;
   }
-  p {
-    margin: 0
-  }
-  div {
-    margin-bottom: 120px;
-    p {
-      font-size: 48px;
-      margin-bottom: 28px;
-    }
 
-  }
   .footer {
     margin-bottom: 20px;
     font-size: 20px;
@@ -39,29 +36,30 @@
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 830px) {
 
   .wrapper {
+    min-width: 260px;
     margin-top: 70px;
-    div {
-      margin-bottom: 48px;
-      p {
-        font-size: 27px;
-        margin-bottom: 26px;
-      }
+    padding: 5px;
+
+    .header {
+      font-size: 38px;
     }
-    div + div {
-      margin-bottom: 110px;
-      p {
-        font-size: 15px;
-        margin-bottom: 8px;
-        font-weight: 100;
-      }
-      .yellow {
-        font-size: 27px;
+
+    ul {
+      list-style: none;
+      > li {
+        > p {
+          font-size: 28px;
+          margin: 5px;
+        }
       }
     }
 
+    .footer {
+      font-size: 20px;
+    }
   }
 
 }
