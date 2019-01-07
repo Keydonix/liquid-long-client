@@ -16,8 +16,7 @@ export class InfoPanelComponent implements OnInit {
   @Input() price$: Observable<number>;
   @ViewChild('gradient') gradient: ElementRef<HTMLDivElement>;
   @ViewChild('priceLine') priceLine: ElementRef<HTMLDivElement>;
-  @ViewChild('dashedLine') dashedLine: ElementRef<HTMLDivElement>;
-  @ViewChild('dottedLine') dottedLine: ElementRef<HTMLDivElement>;
+  @ViewChild('solidLine') solidLine: ElementRef<HTMLDivElement>;
   @ViewChild('toolTipBox') toolTipBox: ElementRef<HTMLDivElement>;
   @ViewChild('bottomLineText') bottomLineText: ElementRef<HTMLDivElement>;
   isExpanded = false;
@@ -27,7 +26,6 @@ export class InfoPanelComponent implements OnInit {
   liquidationLossPercentage$: Observable<number>;
   portfolioValue$: Observable<number>;
   priceToGain100$: Observable<number>;
-  priceToGain50$: Observable<number>;
   priceToGain0$: Observable<number>;
   priceToLose50$: Observable<number>;
   maxLossPercentage$: Observable<number>;
@@ -47,7 +45,6 @@ export class InfoPanelComponent implements OnInit {
       );
     this.portfolioValue$ = this.middleware.positionValueInUsdAtFuturePrice$(this.price$, this.leverage$, this.quantity$);
     this.priceToGain100$ = this.middleware.futurePriceInUsdForPercentChange$(100, this.leverage$);
-    this.priceToGain50$ = this.middleware.futurePriceInUsdForPercentChange$(50, this.leverage$);
     this.priceToGain0$ = this.middleware.futurePriceInUsdForPercentChange$(0, this.leverage$);
     this.priceToLose50$ = this.middleware.futurePriceInUsdForPercentChange$(-50, this.leverage$);
     this.maxLossPercentage$ = this.middleware.percentageChangeForFuturePrice$(this.liquidationPrice$, this.leverage$)
@@ -61,25 +58,15 @@ export class InfoPanelComponent implements OnInit {
 
     combineLatest(
       this.priceToGain100$,
-      this.priceToGain50$,
       this.priceToGain0$,
       this.liquidationPrice$,
-    ).subscribe(([price100, price50, price0, priceLiquidation]) => {
-      const dashedValueNormalized = (price50 - priceLiquidation) / (price100 - priceLiquidation);
-      const dottedValueNormalized = (price0 - priceLiquidation) / (price100 - priceLiquidation);
-      this.dashedLine.nativeElement.setAttribute('style', `top: ${235 + (-118 - 235) * dashedValueNormalized}px`);
-      this.dottedLine.nativeElement.setAttribute('style', `top: ${118 + (-235 - 118) * dottedValueNormalized}px`);
+    ).subscribe(([price100, price0, priceLiquidation]) => {
+      const gradientHeight = this.gradient.nativeElement.clientHeight;
+      const priceRange = price100 - priceLiquidation;
+      const currentPriceAsPercentageOfChartRange = 1 - (price0 - priceLiquidation) / priceRange;
+      const currentPriceHeightRelativeToGradient = gradientHeight * currentPriceAsPercentageOfChartRange;
+      this.solidLine.nativeElement.setAttribute('style', `height: ${currentPriceHeightRelativeToGradient}px`);
     });
-
-    // shift the bottom text to avoid overlapping
-    this.leverage$.subscribe(leverage => {
-      if (leverage > 2.8) {
-        this.bottomLineText.nativeElement.setAttribute('style', `padding-left: 80px;`);
-      } else {
-        this.bottomLineText.nativeElement.removeAttribute('style');
-      }
-    });
-
   }
 
   clickMoreDetails() {

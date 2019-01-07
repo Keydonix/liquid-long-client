@@ -21,14 +21,12 @@
   <div class="legend" [style.visibility]="!(leverage$ | async) ? 'hidden' : ''">
     <div class="left">
       <p><img src="assets/line-green-white.png" width="30" height="6" /></p>
-      <p><img src="assets/line-dashed.png" width="30" height="3" /></p>
-      <p><img src="assets/line-dashed-small.png" width="30" height="3" /></p>
+      <p><img src="assets/line-solid.png" width="30" height="3" /></p>
       <p><img src="assets/line-red-white.png" width="30" height="6" /></p>
     </div>
     <div class="right">
-      <p>Price to gain 100% of your money</p>
-      <p>Price to gain 50% of your money</p>
-      <p>Price to gain 0% of your money</p>
+      <p>Price to double your money</p>
+      <p>Current Price</p>
       <p style="white-space: pre-line">Liquidation price<br />
         • lose {{maxLossPercentage$ | async | percent}} if you close your position voluntarily<br />
         • lose {{liquidationLossPercentage$ | async | percent}} if your position is forcefully closed</p>
@@ -39,10 +37,7 @@
   <div class="gradient-wrapper">
     <div class="txt">{{priceToGain100$ | async | currency}}</div>
     <div class="gradient" (pointerleave)="mouseLeaveChart()" (pointerenter)="mouseEnterChart()" #gradient>
-      <div class="line gain50" [class.hidden]="!(leverage$ | async)" #dashedLine>
-        <div class="txt bottom">{{priceToGain50$ | async | currency}}</div>
-      </div>
-      <div class="line current" [class.hidden]="!(leverage$ | async)" #dottedLine>
+      <div class="line current" [class.hidden]="!(leverage$ | async)" #solidLine>
         <div class="txt bottom">{{priceToGain0$ | async | currency}}</div>
       </div>
       <div class="line liquidation" [class.hidden]="!(leverage$ | async)">

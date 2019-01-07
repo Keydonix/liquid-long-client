@@ -44,13 +44,14 @@
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     cursor: -webkit-grab;
+    cursor: grab;
     height: 20px;
     background-color: #ffffff;
     width: 4px;
   }
   input[type=range]::-moz-range-thumb {
     -webkit-appearance: none;
-    cursor: -moz-grab;
+    cursor: grab;
     height: 20px;
     background-color: #ffffff;
     width: 4px;
@@ -63,7 +64,7 @@
     width: 8px;
     border-radius: 2px;
     background: #ffffff;
-    cursor: pointer;
+    cursor: grab;
   }
   input[type=range].hide-thumb::-webkit-slider-thumb {
     display: hidden;

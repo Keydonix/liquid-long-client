@@ -50,7 +50,7 @@
       width: 8px;
       border-radius: 2px;
       background: #ffffff;
-    cursor: -webkit-grab;
+      cursor: grab;
     }
     input[type=range]::-moz-range-thumb {
       box-shadow: 0 1px 1px rgba(50, 50, 50, 0.91), 1px 0 1px rgba(50, 50, 50, 0.91);
@@ -59,7 +59,7 @@
       width: 8px;
       border-radius: 2px;
       background: #ffffff;
-      cursor: -moz-grab;
+      cursor: grab;
     }
     input[type=range]::-ms-thumb {
       box-shadow: 0 1px 1px rgba(50, 50, 50, 0.91), 1px 0 1px rgba(50, 50, 50, 0.91);
@@ -69,7 +69,7 @@
       width: 8px;
       border-radius: 2px;
       background: #ffffff;
-      cursor: pointer;
+      cursor: grab;
     }
   }
   .legend {

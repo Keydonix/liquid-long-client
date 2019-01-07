@@ -98,23 +98,16 @@
       padding-bottom: 2px;
       overflow: hidden;
       position: relative;
+      display: grid;
+      grid-template-rows: max-content 1fr;
 
       .line {
-        height: 33%;
-        position: relative;
-
-        .bottom {
-          position: absolute;
-          bottom: 0;
-        }
-      }
-
-      .line.gain50 {
-        border-bottom: 2px dashed #ffffff;
+        display: flex;
+        align-items: flex-end;
       }
 
       .line.current {
-        border-bottom: 2px dotted #ffffff;
+        border-bottom: 2px solid #ffffff;
       }
 
       .at-cursor {
