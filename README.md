@@ -6,7 +6,7 @@
 `yarn build` - make build to `./dist` folder which could be served by any web-server like `npx http-server ./dist`
 
 ## IPFS Deploy
-start IPFS daemon inside a docker container
+start IPFS daemon inside a docker container (note: this step will leave IPFS running, you won't need to repeat in the future)
 ```
 docker container run -d --restart=on-failure --name ipfs --mount 'type=volume,source=ipfs-export,dst=/export' --mount 'type=volume,source=ipfs,dst=/data/ipfs' -p 4001:4001 -p 8080:8080 ipfs/go-ipfs
 ```

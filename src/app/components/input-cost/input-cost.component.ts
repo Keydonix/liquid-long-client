@@ -17,7 +17,7 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
   @Output() value$ = new EventEmitter<number>();
   minValue: number = 0.01;
   maxValue: number = 0.05;
-  numberValue: number;
+  numberValue: number = 0.01;
   state: 'blank' | 'spinner' | 'input' = 'blank';
 
   static toSignificantFigures(value: number, numberOfSignificantFigures: number, roundingFunction: (number) => number): number {
