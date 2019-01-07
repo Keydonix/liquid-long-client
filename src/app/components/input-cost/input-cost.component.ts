@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { TooltipComponent } from '../tooltip-component';
+import { skip } from 'rxjs/operators';
 
 
 @Component({
@@ -11,11 +12,13 @@ import { TooltipComponent } from '../tooltip-component';
 export class InputCostComponent extends TooltipComponent implements OnInit {
 
   @Input() exchangeCostRangeLimits$: Observable<{ low: number, high: number }>;
+  @Input() leverage$: Observable<number>;
+  @Input() quantity$: Observable<number>;
   @Output() value$ = new EventEmitter<number>();
-  minValue = 0.01;
-  maxValue = 0.05;
+  minValue: number = 0.01;
+  maxValue: number = 0.05;
   numberValue: number;
-
+  state: 'blank' | 'spinner' | 'input' = 'blank';
 
   static toSignificantFigures(value: number, numberOfSignificantFigures: number, roundingFunction: (number) => number): number {
     // early return for 0
@@ -42,8 +45,10 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
     this.exchangeCostRangeLimits$.subscribe(({low, high}) => {
       this.minValue = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
       this.maxValue = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
+      this.state = 'input';
       this.value$.emit(this.minValue);
     });
+    combineLatest(this.leverage$, this.quantity$).subscribe(([leverage, quantity]) => this.state = (leverage && quantity) ? 'spinner' : 'blank')
   }
 
   setValue(value: number) {

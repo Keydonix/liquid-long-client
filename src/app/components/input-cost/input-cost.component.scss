@@ -79,9 +79,27 @@
   }
 }
 
+.spinner {
+  height: 132px;
+  width: 100%;
+  background: url("../../../assets/preloader.gif") no-repeat center;
+  transform: translateY(4px);
+}
+
+.blank {
+  height: 132px;
+  width: 100%;
+}
+
 .tooltip {
   bottom: 45px;
   i {
     left: calc(100% - 17px);
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .spinner, .blank {
+    height: 128px;
   }
 }

@@ -1,38 +1,46 @@
-<h4 class="input-label">How much are you willing to pay in costs?</h4>
+<div [hidden]="state !== 'input'">
+  <h4 class="input-label">How much are you willing to pay in costs?</h4>
 
-<div class="range-wrapper">
-  <div class="slider-wrapper">
-    <span class="range-background"></span>
-    <input
-        type="range"
-        [ngModel]="numberValue"
-        (ngModelChange)="setValue($event)"
-        [min]="minValue"
-        [max]="maxValue"
-        [step]="(maxValue - minValue)/100"
-        [value]="minValue"
-    >
+  <div class="range-wrapper">
+    <div class="slider-wrapper">
+      <span class="range-background"></span>
+      <input
+          type="range"
+          [ngModel]="numberValue"
+          (ngModelChange)="setValue($event)"
+          [min]="minValue"
+          [max]="maxValue"
+          [step]="(maxValue - minValue)/100"
+          [value]="minValue"
+      >
+    </div>
+    <p class="legend">
+      <span class="left">{{minValue | number:'1.1-9'}}</span> recommended values <span class="right">{{maxValue | number:'1.1-9'}}</span>
+    </p>
   </div>
-  <p class="legend">
-    <span class="left">{{minValue | number:'1.1-9'}}</span> recommended values <span class="right">{{maxValue | number:'1.1-9'}}</span>
-  </p>
+
+  <div class="inputbox">
+    <input type="number"
+          [ngModel]="numberValue"
+          (ngModelChange)="setValue($event)"
+          [min]="minValue"
+          [max]="maxValue"
+          [step]="(maxValue - minValue)/100"
+          [value]="minValue"
+          class="input" placeholder="Between {{minValue | number:'1.1-9'}} and {{maxValue | number:'1.1-9'}}"
+    />
+    <span class="input-suffix yellow bigger bold">ETH</span>
+    <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
+  </div>
+
+  <div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
+    The maximum amount you are willing to pay in <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/33913-what-are-exchange-costs">exchange costs</a>.  Any unused exchange costs will be refunded to you at the end of the transaction.
+    <i></i>
+  </div>
 </div>
 
-<div class="inputbox">
-  <input type="number"
-         [ngModel]="numberValue"
-         (ngModelChange)="setValue($event)"
-         [min]="minValue"
-         [max]="maxValue"
-         [step]="(maxValue - minValue)/100"
-         [value]="minValue"
-         class="input" placeholder="Between {{minValue | number:'1.1-9'}} and {{maxValue | number:'1.1-9'}}"
-  />
-  <span class="input-suffix yellow bigger bold">ETH</span>
-  <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
+<div class="spinner" [hidden]="state !== 'spinner'">
 </div>
 
-<div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
-  The maximum amount you are willing to pay in <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/33913-what-are-exchange-costs">exchange costs</a>.  Any unused exchange costs will be refunded to you at the end of the transaction.
-  <i></i>
+<div class="blank" [hidden]="state !== 'blank'">
 </div>
