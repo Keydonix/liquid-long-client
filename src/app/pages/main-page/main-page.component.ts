@@ -32,6 +32,7 @@ export class MainPageComponent implements OnInit {
   quantity: number;
   exchangeCost: number;
   serviceFee: number;
+  affiliate: string;
 
   leverageEmitter$ = new EventEmitter<number>();
   quantityEmitter$ = new EventEmitter<number>();
@@ -59,6 +60,7 @@ export class MainPageComponent implements OnInit {
   constructor(
     public middleware: MiddlewareService,
     private router: Router,
+    private route: ActivatedRoute,
     private logger: LoggerService,
   ) {
     this.leverage$.subscribe(leverage => {
@@ -77,6 +79,25 @@ export class MainPageComponent implements OnInit {
       this.logger.log(`serviceFee: event=`, serviceFee);
       this.serviceFee = serviceFee;
     });
+    this.route.queryParamMap.subscribe(queryParameters => {
+      const normalizeAffiliate = (affiliate: string): string => {
+        const match = /^(?:0x)?([a-zA-Z0-9]{40})$/.exec(affiliate);
+        return (match) ? match[1] : '';
+      };
+
+      const localStorageGetOrSet = (key: string, defaultValue: string): string => {
+        const storageValue = normalizeAffiliate(window.localStorage.getItem(key));
+        if (!storageValue) {
+          window.localStorage.setItem(key, defaultValue);
+        }
+        return storageValue || defaultValue;
+      };
+
+      const queryAffiliate = normalizeAffiliate(queryParameters.get('affiliate'));
+      this.affiliate = (/ipfs/.test(window.location.hostname))
+        ? queryAffiliate
+        : localStorageGetOrSet('affiliate', queryAffiliate);
+    });
   }
 
   ngOnInit() { }
@@ -88,7 +109,7 @@ export class MainPageComponent implements OnInit {
   onSubmit() {
     this.logger.log(`Transaction submitted with values (${this.leverage}, ${this.quantity}, ${this.exchangeCost}, ${this.serviceFee}).`);
 
-    this.middleware.submit(this.leverage, this.quantity, this.exchangeCost, this.serviceFee)
+    this.middleware.submit(this.leverage, this.quantity, this.exchangeCost, this.serviceFee, this.affiliate)
       .then(cdpId => {
         this.logger.log(`Transaction confirmed!`);
         this.confirmEmitter$.emit(true);

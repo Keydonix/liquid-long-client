@@ -221,10 +221,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@keydonix/liquid-long-client-library@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@keydonix/liquid-long-client-library/-/liquid-long-client-library-1.4.0.tgz#79bb49894132e9249bc424ccf2863d4075745d91"
-  integrity sha512-avTXHvdUcu+iywLQvxeGURAIN4UxsuN1Nv3teIxTQNR0Dv6h5R34pLoadMYE/aLytN/ZujrVelJWTPY4shXDkA==
+"@keydonix/liquid-long-client-library@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@keydonix/liquid-long-client-library/-/liquid-long-client-library-2.0.0.tgz#2d3d9a545cf769f30ea71fbcf112eba57099322c"
+  integrity sha512-4JUnYmlKtUHoyx1bGOlcBNspK4MorqBTrpM7fs15zd0OmZOGMkcxtxp2OWcKNEHrnIbXqzkKCRngVt0Y/WMraQ==
   dependencies:
     ethers "4.0.7"
 

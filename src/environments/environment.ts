@@ -6,11 +6,11 @@ export const environment = {
   production: false,
   minQuantity: 0.001, // min value and step size
   maxQuantity: 10,
-  liquidLongContractAddress: '0x3625fd10e2b4e6a81e57038756e39542fe4ca02f',
-  // liquidLongContractAddress: '0xF3BCABD8FAE29F75BE271EBE2499EDB4C7C139B7',
+  // liquidLongContractAddress: '0x3625fd10e2b4e6a81e57038756e39542fe4ca02f',
+  liquidLongContractAddress: '0xB03CF72BC5A9A344AAC43534D664917927367487',
   defaultEthPriceInUsd: 150,
-  jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
-  // jsonRpcAddress: 'http://127.0.0.1:1235',
+  // jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
+  jsonRpcAddress: 'http://127.0.0.1:1235',
   defaultProviderFeeRate: 0.01,
   web3PollingInterval: 1000, // milliseconds: how often we should hammer the provider (e.g., MetaMask) for block updates and such
   ethPricePollingFrequency: 10000, // frequency in milliseconds
