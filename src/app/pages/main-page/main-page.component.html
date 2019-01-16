@@ -2,7 +2,7 @@
   <div>
     <div class="banner" *ngIf="isWrongBrowser">
       <div class="bold icon"><img src="assets/warning.png" alt="warning sign"/>Warning</div>
-      <div class="text">To utilize all of the features of this tool, you must use an Ethereum enabled browser such as <a href="https://brave.com" target="_blank"
+      <div class="text">To utilize all of the features, you must use an Ethereum enabled browser such as <a href="https://brave.com" target="_blank"
         class="red">Brave</a> or a browser extension like <a href="https://metamask.io" target="_blank"
         class="red">MetaMask</a>.
       </div>
@@ -10,7 +10,7 @@
 
     <div class="banner" *ngIf="!(this.middleware.ethereumEnabled$ | async)">
       <div class="bold icon"><img src="assets/warning.png"/>Warning</div>
-      <div class="text">To utilize all of the features of this tool, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Re-prompt for account access.</span>
+      <div class="text">To utilize all of the features, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Prompt for account access.</span>
       </div>
     </div>
 
