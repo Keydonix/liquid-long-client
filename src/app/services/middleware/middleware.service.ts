@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
-import { map, mergeMap, filter, debounceTime } from 'rxjs/operators';
+import { map, mergeMap, filter, debounceTime, shareReplay } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { environment } from '../../../environments/environment';
 
@@ -29,7 +29,8 @@ declare global {
 export class MiddlewareService {
   private liquidLong: LiquidLong;
   public ethereumEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public price$ = new EventEmitter<number>();
+  public priceFeed$ = new EventEmitter<number>();
+  public price$ = this.priceFeed$.pipe(shareReplay(1));
 
   constructor(private logger: LoggerService) {
     this.liquidLong = this.createLiquidLong();
@@ -39,7 +40,7 @@ export class MiddlewareService {
         this.logger.log(`newEthPriceInUsd=`, newEthPriceInUsd);
         oldPrice = newEthPriceInUsd;
       }
-      this.price$.emit(newEthPriceInUsd);
+      this.priceFeed$.emit(newEthPriceInUsd);
     });
   }
 
