@@ -25,7 +25,7 @@
       <h1 class="header">Open a Leveraged ETH position</h1>
 
       <div class="left-main inner-grid">
-        <app-input-quantity class="input-quantity" [maxValue]="maxQuantity" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
+        <app-input-quantity class="input-quantity" [maxValue$]="maxQuantity$" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
         <app-input-leverage class="input-leverage" (value$)="leverageEmitter$.emit($event)"></app-input-leverage>
         <app-input-fee class="input-cost" [exchangeCostRangeLimits$]="exchangeCostRangeLimits$" [leverage$]="leverage$" [quantity$]="quantity$" (value$)="exchangeCostEmitter$.emit($event)"></app-input-fee>
       </div>
