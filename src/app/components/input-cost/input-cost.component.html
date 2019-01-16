@@ -1,5 +1,5 @@
 <div [hidden]="state !== 'input'">
-  <h4 class="input-label">How much are you willing to pay in costs?</h4>
+  <h4 class="input-label">Provide refundable ETH to protect from slippage?</h4>
 
   <div class="range-wrapper">
     <div class="slider-wrapper">
@@ -15,7 +15,7 @@
       >
     </div>
     <p class="legend">
-      <span class="left">{{minValue | number:'1.1-9'}}</span> recommended values <span class="right">{{maxValue | number:'1.1-9'}}</span>
+      <span class="left">0</span> recommended values <span class="right">{{(maxValue-minValue) | number:'1.1-9'}}</span>
     </p>
   </div>
 
@@ -23,18 +23,18 @@
     <input type="number"
           [ngModel]="numberValue"
           (ngModelChange)="setValue($event)"
-          [min]="minValue"
-          [max]="maxValue"
+          [min]="0"
+          [max]="maxValue-minValue"
           [step]="(maxValue - minValue)/100"
-          [value]="minValue"
-          class="input" placeholder="Between {{minValue | number:'1.1-9'}} and {{maxValue | number:'1.1-9'}}"
+          [value]="0"
+          class="input" placeholder="Between {{0 | number:'1.1-9'}} and {{(maxValue-minValue) | number:'1.1-9'}}"
     />
     <span class="input-suffix yellow bigger bold">ETH</span>
     <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
   </div>
 
   <div class="tooltip shadow" outsideClickable (clickOutside)="clickedOutside($event)" *ngIf="isTooltipVisible">
-    The maximum amount you are willing to pay in <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/33913-what-are-exchange-costs">exchange costs</a>.  Any unused exchange costs will be refunded to you at the end of the transaction.
+    <a target="_blank" rel="noopener nofollow" href="http://help.keydonix.com/articles/33913-what-are-exchange-costs">Extra ETH</a> provided to the contract that will be used if the market moves while waiting for your transaction to mine.  Any unused portion will be refunded to you at the end of the transaction.
     <i></i>
   </div>
 </div>
