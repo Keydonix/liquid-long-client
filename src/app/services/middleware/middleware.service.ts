@@ -33,7 +33,6 @@ export class MiddlewareService {
 
   constructor(private logger: LoggerService) {
     this.liquidLong = this.createLiquidLong();
-    this.enableEthereum().catch(() => {});
     let oldPrice = 0;
     this.liquidLong.registerForEthPriceUpdated(newEthPriceInUsd => {
       if (oldPrice !== newEthPriceInUsd) {
