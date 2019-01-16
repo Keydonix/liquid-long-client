@@ -15,9 +15,12 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
   @Input() leverage$: Observable<number>;
   @Input() quantity$: Observable<number>;
   @Output() value$ = new EventEmitter<number>();
-  minValue: number = 0.01;
-  maxValue: number = 0.05;
-  numberValue: number = 0.01;
+  minExchangeCost: number = 0.01;
+  maxExchangeCost: number = 0.05;
+  selectedExchangeCost: number = 0.01;
+  get numberValue() { return this.selectedExchangeCost - this.minExchangeCost; }
+  get minValue() { return 0; }
+  get maxValue() { return this.maxExchangeCost - this.minExchangeCost; }
   state: 'blank' | 'spinner' | 'input' = 'blank';
 
   static toSignificantFigures(value: number, numberOfSignificantFigures: number, roundingFunction: (number) => number): number {
@@ -43,17 +46,18 @@ export class InputCostComponent extends TooltipComponent implements OnInit {
 
   ngOnInit() {
     this.exchangeCostRangeLimits$.subscribe(({low, high}) => {
-      this.minValue = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
-      this.maxValue = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
+      this.minExchangeCost = InputCostComponent.toSignificantFigures(low, 2, Math.ceil);
+      this.maxExchangeCost = InputCostComponent.toSignificantFigures(high, 2, Math.ceil);
+      this.selectedExchangeCost = this.minExchangeCost;
       this.state = 'input';
-      this.value$.emit(this.minValue);
+      this.value$.emit(this.selectedExchangeCost);
     });
     combineLatest(this.leverage$, this.quantity$).subscribe(([leverage, quantity]) => this.state = (leverage && quantity) ? 'spinner' : 'blank')
   }
 
   setValue(value: number) {
-    this.numberValue = value;
-    this.value$.emit(value);
+    this.selectedExchangeCost = value + this.minExchangeCost;
+    this.value$.emit(this.selectedExchangeCost);
   }
 
 }
