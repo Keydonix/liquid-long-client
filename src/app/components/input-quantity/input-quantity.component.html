@@ -4,17 +4,17 @@
   <input type="number"
          [ngModel]="numberValue" (ngModelChange)="setValue($event)"
          [min]="minValue"
-         [max]="maxValue"
+         [max]="maxValue$ | async"
          [step]="minValue"
          class="input"
-         placeholder="Between {{minValue}} and {{maxValue}}"
+         placeholder="Between {{minValue}} and {{maxValue$ | async}}"
   />
   <span class="input-suffix yellow bigger bold">ETH</span>
   <span class="input-suffix material-icons cursorPointer tooltip-button" (click)="toggleTooltip($event)">help</span>
 </div>
 
-<div class="validation-error" [style.visibility]="(numberValue < minValue || numberValue > maxValue) ? 'visible' : 'hidden'">
-  <span>Between {{minValue}} and {{maxValue}}</span>
+<div class="validation-error" [style.visibility]="(numberValue < minValue || numberValue > (maxValue$ | async)) ? 'visible' : 'hidden'">
+  <span>Between {{minValue}} and {{maxValue$ | async}}</span>
 </div>
 
 

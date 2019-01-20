@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, NgZone } from '@angular/core';
 import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
 import { map, mergeMap, filter, debounceTime, shareReplay } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
@@ -29,19 +29,25 @@ declare global {
 export class MiddlewareService {
   private liquidLong: LiquidLong;
   public ethereumEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public priceFeed$ = new EventEmitter<number>();
-  public price$ = this.priceFeed$.pipe(shareReplay(1));
+  public price$ = new EventEmitter<number>();
+  public maxLeverageSize$ = new EventEmitter<number>();
 
-  constructor(private logger: LoggerService) {
+  constructor(private logger: LoggerService, private zone: NgZone) {
     this.liquidLong = this.createLiquidLong();
     let oldPrice = 0;
     this.liquidLong.registerForEthPriceUpdated(newEthPriceInUsd => {
-      if (oldPrice !== newEthPriceInUsd) {
-        this.logger.log(`newEthPriceInUsd=`, newEthPriceInUsd);
-        oldPrice = newEthPriceInUsd;
-      }
-      this.priceFeed$.emit(newEthPriceInUsd);
+      zone.run(() => this.price$.emit(newEthPriceInUsd));
+      if (oldPrice === newEthPriceInUsd) return;
+      this.logger.log(`newEthPriceInUsd=`, newEthPriceInUsd);
+      oldPrice = newEthPriceInUsd;
     });
+    let oldMaxLeverageSize = 0;
+    this.liquidLong.registerForMaxLeverageSizeUpdate(newMaxLeverageSizeInEth => {
+      zone.run(() => this.maxLeverageSize$.emit(newMaxLeverageSizeInEth));
+      if (oldMaxLeverageSize === newMaxLeverageSizeInEth) return;
+      this.logger.log(`newMaxLeverageSizeInEth=${newMaxLeverageSizeInEth}`);
+      oldMaxLeverageSize = newMaxLeverageSizeInEth;
+    })
   }
 
   static isWeb3Compatible(): boolean {

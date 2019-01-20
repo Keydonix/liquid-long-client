@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TooltipComponent } from '../tooltip-component';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { environment } from '../../../environments/environment';
 })
 export class InputQuantityComponent extends TooltipComponent implements OnInit {
 
-  @Input() maxValue: number;
+  @Input() maxValue$: Observable<number>;
   @Output() value$ = new EventEmitter<number>();
   numberValue: number;
   minValue = environment.minQuantity;
