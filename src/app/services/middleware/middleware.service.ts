@@ -29,21 +29,26 @@ declare global {
 export class MiddlewareService {
   private liquidLong: LiquidLong;
   public ethereumEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public price$ = new EventEmitter<number>();
-  public maxLeverageSize$ = new EventEmitter<number>();
+  public price$: Observable<number>;
+  public maxLeverageSize$: Observable<number>;
 
   constructor(private logger: LoggerService, private zone: NgZone) {
+    const priceFeed = new EventEmitter<number>();
+    const maxLeverageSizeFeed = new EventEmitter<number>();
+    this.price$ = priceFeed.pipe(shareReplay(1));
+    this.maxLeverageSize$ = maxLeverageSizeFeed.pipe(shareReplay(1));
+
     this.liquidLong = this.createLiquidLong();
     let oldPrice = 0;
     this.liquidLong.registerForEthPriceUpdated(newEthPriceInUsd => {
-      zone.run(() => this.price$.emit(newEthPriceInUsd));
+      zone.run(() => priceFeed.emit(newEthPriceInUsd));
       if (oldPrice === newEthPriceInUsd) return;
       this.logger.log(`newEthPriceInUsd=`, newEthPriceInUsd);
       oldPrice = newEthPriceInUsd;
     });
     let oldMaxLeverageSize = 0;
     this.liquidLong.registerForMaxLeverageSizeUpdate(newMaxLeverageSizeInEth => {
-      zone.run(() => this.maxLeverageSize$.emit(newMaxLeverageSizeInEth));
+      zone.run(() => maxLeverageSizeFeed.emit(newMaxLeverageSizeInEth));
       if (oldMaxLeverageSize === newMaxLeverageSizeInEth) return;
       this.logger.log(`newMaxLeverageSizeInEth=${newMaxLeverageSizeInEth}`);
       oldMaxLeverageSize = newMaxLeverageSizeInEth;

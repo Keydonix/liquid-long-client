@@ -3,7 +3,7 @@
 export const environment = {
   production: true,
   minQuantity: 0.001, // min value and step size
-  liquidLongContractAddress: '0x3Bd3d07a2d352E7CA098CCcb2b0882c9f45597D2',
+  liquidLongContractAddress: '0xe61669566c4bf676ae6b55252c457a192bd26a9e',
   defaultEthPriceInUsd: 150,
   jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
   defaultProviderFeeRate: 0.01,

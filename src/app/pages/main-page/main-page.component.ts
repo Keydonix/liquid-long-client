@@ -15,7 +15,6 @@ export class MainPageComponent implements OnInit {
 
   maxQuantity$ = this.middleware.maxLeverageSize$.pipe(
     map(x => MainPageComponent.toSignificantFigures(x, 2, Math.floor)),
-    shareReplay(1),
   );
   price$ = this.middleware.price$.pipe(
     catchError((err, caught) => {
@@ -23,7 +22,6 @@ export class MainPageComponent implements OnInit {
       this.isNotConnected = true;
       return caught;
     }),
-    shareReplay(1),
   );
 
   isDebug = false;
