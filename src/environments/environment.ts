@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   minQuantity: 0.001, // min value and step size
-  // liquidLongContractAddress: '0xe61669566c4bf676ae6b55252c457a192bd26a9e',
+  // liquidLongContractAddress: '0x69E51C852FB4D7A8C47BDF438B115AD13A6BFC52',
   liquidLongContractAddress: '0xB03CF72BC5A9A344AAC43534D664917927367487',
   defaultEthPriceInUsd: 150,
   // jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
