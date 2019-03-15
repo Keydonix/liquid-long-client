@@ -4,7 +4,7 @@ import { map, mergeMap, filter, debounceTime, shareReplay } from 'rxjs/operators
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { environment } from '../../../environments/environment';
 
-import { LiquidLong } from '@keydonix/liquid-long-client-library';
+import { LiquidLong, Address } from '@keydonix/liquid-long-client-library';
 import { LoggerService } from '../logger/logger.service';
 
 interface AsyncSendable {
@@ -75,8 +75,7 @@ export class MiddlewareService {
       return LiquidLong.createWeb3(
         window.ethereum,
         environment.liquidLongContractAddress,
-        environment.defaultEthPriceInUsd,
-        environment.defaultProviderFeeRate,
+        1,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
@@ -85,8 +84,7 @@ export class MiddlewareService {
       return LiquidLong.createWeb3(
         window.web3.currentProvider,
         environment.liquidLongContractAddress,
-        environment.defaultEthPriceInUsd,
-        environment.defaultProviderFeeRate,
+        1,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
@@ -95,8 +93,7 @@ export class MiddlewareService {
       return LiquidLong.createJsonRpc(
         environment.jsonRpcAddress,
         environment.liquidLongContractAddress,
-        environment.defaultEthPriceInUsd,
-        environment.defaultProviderFeeRate,
+        1,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
@@ -202,7 +199,7 @@ export class MiddlewareService {
           leverageSizeInEth,
           costLimitInEth,
           feeLimitInEth,
-          affiliate)
+          Address.fromHexString(affiliate))
         }
       );
   }

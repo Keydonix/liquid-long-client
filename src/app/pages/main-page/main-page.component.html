@@ -22,6 +22,8 @@
     <div class="outer-grid">
       <h1 class="header">Open a Leveraged ETH position</h1>
 
+      <a class="open-button" onclick="location.href='https://liquid-close.keydonix.com/'">View/Close Positions</a>
+
       <div class="left-main inner-grid">
         <app-input-quantity class="input-quantity" [maxValue$]="maxQuantity$" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
         <app-input-leverage class="input-leverage" (value$)="leverageEmitter$.emit($event)"></app-input-leverage>

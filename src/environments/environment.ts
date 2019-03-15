@@ -1,3 +1,5 @@
+import { Address } from "@keydonix/liquid-long-client-library";
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -5,8 +7,8 @@
 export const environment = {
   production: false,
   minQuantity: 0.001, // min value and step size
-  // liquidLongContractAddress: '0x69E51C852FB4D7A8C47BDF438B115AD13A6BFC52',
-  liquidLongContractAddress: '0xB03CF72BC5A9A344AAC43534D664917927367487',
+  // liquidLongContractAddress: Address.fromHexString('0xADbE0dD80f0D75BEeD3247d659Ff7FE3bDACD8a1'),
+  liquidLongContractAddress: Address.fromHexString('0xB03CF72BC5A9A344AAC43534D664917927367487'),
   defaultEthPriceInUsd: 150,
   // jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
   jsonRpcAddress: 'http://127.0.0.1:1235',

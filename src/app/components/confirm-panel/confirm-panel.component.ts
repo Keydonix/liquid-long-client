@@ -24,6 +24,7 @@ export class ConfirmPanelComponent extends TooltipComponent implements OnInit {
       this.submit$.pipe(mapTo(true)),
       this.confirm$.pipe(mapTo(false)),
     );
+    // TODO: merge(this.leverageAmount$.pipe(mapTo(false)), ...).pipe(startWith(true))
   }
 
 }
