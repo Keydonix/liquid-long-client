@@ -6,7 +6,7 @@
       </div>
     </div>
 
-    <div class="banner" *ngIf="!(this.middleware.ethereumEnabled$ | async)">
+    <div class="banner" *ngIf="!(this.middlewareService.ethereumEnabled$ | async)">
       <div class="bold icon"><img src="assets/warning.png"/>Warning</div>
       <div class="text">To utilize all of the features, you must allow Ethereum account access. <span class="pointer red nobreak" (click)="enableEthereumReprompt()">Prompt for account access.</span>
       </div>
@@ -22,7 +22,7 @@
     <div class="outer-grid">
       <h1 class="header">Open a Leveraged ETH position</h1>
 
-      <a class="open-button" onclick="location.href='https://liquid-close.keydonix.com/'">View/Close Positions</a>
+      <a class="open-button" href="https://liquid-close.keydonix.com/?affiliate={{affiliateService.getAffiliate()}}">View/Close Positions</a>
 
       <div class="left-main inner-grid">
         <app-input-quantity class="input-quantity" [maxValue$]="maxQuantity$" (value$)="quantityEmitter$.emit($event)"></app-input-quantity>
