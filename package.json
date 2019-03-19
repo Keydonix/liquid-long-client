@@ -25,7 +25,7 @@
     "@angular/platform-browser": "7.0.4",
     "@angular/platform-browser-dynamic": "7.0.4",
     "@angular/router": "7.0.4",
-    "@keydonix/liquid-long-client-library": "5.1.0",
+    "@keydonix/liquid-long-client-library": "6.0.0",
     "core-js": "2.5.4",
     "rxjs": "6.3.3",
     "zone.js": "0.8.26"
