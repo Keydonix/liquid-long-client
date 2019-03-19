@@ -75,7 +75,7 @@ export class MiddlewareService {
       return LiquidLong.createWeb3(
         window.ethereum,
         environment.liquidLongContractAddress,
-        1,
+        async () => undefined,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
@@ -84,7 +84,7 @@ export class MiddlewareService {
       return LiquidLong.createWeb3(
         window.web3.currentProvider,
         environment.liquidLongContractAddress,
-        1,
+        async () => undefined,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
@@ -93,7 +93,7 @@ export class MiddlewareService {
       return LiquidLong.createJsonRpc(
         environment.jsonRpcAddress,
         environment.liquidLongContractAddress,
-        1,
+        async () => undefined,
         environment.web3PollingInterval,
         environment.ethPricePollingFrequency,
         environment.providerFeePollingFrequency,
