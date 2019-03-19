@@ -188,7 +188,7 @@ export class MiddlewareService {
     leverageSizeInEth: number,
     costLimitInEth: number,
     feeLimitInEth: number,
-    affiliate: string,
+    affiliate: Address,
   ) {
     this.logger.log(`method submit`);
 
@@ -199,7 +199,7 @@ export class MiddlewareService {
           leverageSizeInEth,
           costLimitInEth,
           feeLimitInEth,
-          Address.fromHexString(affiliate))
+          affiliate)
         }
       );
   }

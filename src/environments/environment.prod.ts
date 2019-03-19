@@ -5,7 +5,7 @@ import { Address } from "@keydonix/liquid-long-client-library";
 export const environment = {
   production: true,
   minQuantity: 0.001, // min value and step size
-  liquidLongContractAddress: Address.fromHexString('0xADbE0dD80f0D75BEeD3247d659Ff7FE3bDACD8a1'),
+  liquidLongContractAddress: Address.fromHexString('28b61faf5f4b9381a9cdb38d9f87788c563e3644'),
   defaultEthPriceInUsd: 150,
   jsonRpcAddress: 'https://eth-mainnet.alchemyapi.io/jsonrpc/7sE1TzCIRIQA3NJPD5wg7YRiVjhxuWAE',
   defaultProviderFeeRate: 0.01,

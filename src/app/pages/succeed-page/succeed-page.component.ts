@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AffiliateService } from 'src/app/services/affiliate/affiliate.service';
 
 @Component({
   selector: 'app-succeed-page',
@@ -10,7 +11,10 @@ export class SucceedPageComponent implements OnInit {
 
   public cdpId: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    public readonly activatedRoute: ActivatedRoute,
+    public readonly affiliateService: AffiliateService)
+  { }
 
   ngOnInit() {
     this.cdpId = this.activatedRoute.snapshot.paramMap.get('cdpId');
